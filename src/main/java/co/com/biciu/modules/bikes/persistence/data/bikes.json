@@ -1,0 +1,152 @@
+[
+  {
+    "id": "BIC-01",
+    "type": "Mountain",
+    "color": "Red",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-02",
+    "type": "Mountain",
+    "color": "Blue",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-03",
+    "type": "Road",
+    "color": "Green",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-04",
+    "type": "Mountain",
+    "color": "Yellow",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-05",
+    "type": "Road",
+    "color": "Purple",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-06",
+    "type": "Road",
+    "color": "Red",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-07",
+    "type": "Mountain",
+    "color": "Red",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-08",
+    "type": "Road",
+    "color": "Blue",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-09",
+    "type": "Mountain",
+    "color": "Blue",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-10",
+    "type": "Road",
+    "color": "Purple",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-11",
+    "type": "Road",
+    "color": "Yellow",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-12",
+    "type": "Mountain",
+    "color": "Blue",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-13",
+    "type": "Blue",
+    "color": "Mountain",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-14",
+    "type": "Mountain",
+    "color": "Red",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-15",
+    "type": "Road",
+    "color": "Yellow",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-16",
+    "type": "Road",
+    "color": "Yellow",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-17",
+    "type": "Road",
+    "color": "Red",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-18",
+    "type": "Mountain",
+    "color": "Blue",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-19",
+    "type": "Road",
+    "color": "Blue",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-20",
+    "type": "Mountain",
+    "color": "Purple",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-21",
+    "type": "Road",
+    "color": "Red",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-22",
+    "type": "Mountain",
+    "color": "Yellow",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-23",
+    "type": "Mountain",
+    "color": "Red",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-24",
+    "type": "Road",
+    "color": "Green",
+    "isAvailable": true
+  },
+  {
+    "id": "BIC-25",
+    "type": "Road",
+    "color": "Red",
+    "isAvailable": true
+  }
+]
