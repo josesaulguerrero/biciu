@@ -1,31 +1,59 @@
 package co.com.biciu.modules.bikes.persistence.repositories;
 
-import co.com.biciu.interfaces.Repository;
+import co.com.biciu.interfaces.CRUDRepository;
 import co.com.biciu.modules.bikes.persistence.entities.Bike;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 import java.io.*;
+import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class BikeRepository implements Repository<Bike, String> {
-    @Override
-    public List<Bike> findAll() {
+public class BikeRepository implements CRUDRepository<Bike, String> {
+
+    private List<Bike> bikes;
+    private Integer currentId;
+
+    public BikeRepository() {
+        this.loadObjectsInMemory();
+        this.currentId = calculateCurrentId();
+    }
+
+    private void loadObjectsInMemory() {
         try {
             // "" is a shortcut for the absolute path to the root folder of the project.
             Path path = Paths.get("",
                     "src", "main", "java", "co", "com", "biciu", "modules", "bikes", "persistence", "data", "bikes.json");
             FileReader reader = new FileReader(new File(path.toUri()));
             ObjectMapper mapper = new ObjectMapper();
-            List<Bike> bikes = mapper.readValue(reader, new TypeReference<>() {});
-            bikes.forEach(System.out::println);
+            bikes = mapper.readValue(reader, new TypeReference<>() {});
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return List.of();
+    }
+
+    private Integer calculateCurrentId() {
+        return bikes.stream()
+                .map(
+                    bike -> bike.getId().replaceAll("BIC-(\\d+)", "$1")
+                )
+                .map(Integer::parseInt)
+                .max(Integer::compare)
+                .orElseThrow();
+    }
+
+    private String generateNewId() {
+        int newId = Integer.sum(this.currentId, 1);
+        this.currentId = newId;
+        return "BIC-" + newId;
+    }
+
+    @Override
+    public List<Bike> findAll() {
+        return this.bikes;
     }
 
     @Override
@@ -35,6 +63,15 @@ public class BikeRepository implements Repository<Bike, String> {
 
     @Override
     public Bike save(Bike object) {
+        String id = generateNewId();
+        Class<Bike> clazz = Bike.class;
+        try {
+            Field idField = clazz.getDeclaredField("id");
+            idField.setAccessible(true);
+            idField.set(object, id);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 

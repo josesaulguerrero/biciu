@@ -3,6 +3,7 @@ package co.com.biciu.modules.bikes.persistence.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Bike {
+    //BIC-NNN
     @JsonProperty("id")
     private String id;
 

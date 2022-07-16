@@ -7,7 +7,7 @@ import java.util.List;
  * @param <T> The class you want to persist instances of.
  * @param <K> The datatype of the unique property that gives identity to every instance of the given class.
  */
-public interface Repository<T, K> {
+public interface CRUDRepository<T, K> {
     List<T> findAll();
     T findById(K id);
     T save(T object);
