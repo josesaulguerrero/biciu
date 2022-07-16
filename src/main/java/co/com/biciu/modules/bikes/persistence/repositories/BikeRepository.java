@@ -78,6 +78,15 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
     public Bike save(Bike object) {
         this.assignIdField(object);
         this.bikes.add(object);
+        Path path = Paths.get("",
+                "src", "main", "java", "co", "com", "biciu", "modules", "bikes", "persistence", "data", "bikes.json");
+        File file = new File(path.toAbsolutePath().toUri());
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writerWithDefaultPrettyPrinter().writeValue(file, bikes);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return object;
     }
 

@@ -1,152 +1,152 @@
 [
   {
+    "isAvailable": true,
     "id": "BIC-01",
-    "type": "MOUNTAIN",
     "color": "Red",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-02",
-    "type": "MOUNTAIN",
     "color": "Blue",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-03",
-    "type": "ROAD",
     "color": "Green",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-04",
-    "type": "MOUNTAIN",
     "color": "Yellow",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-05",
-    "type": "ROAD",
     "color": "Purple",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-06",
-    "type": "ROAD",
     "color": "Red",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-07",
-    "type": "MOUNTAIN",
     "color": "Red",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-08",
-    "type": "ROAD",
     "color": "Blue",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-09",
-    "type": "MOUNTAIN",
     "color": "Blue",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-10",
-    "type": "ROAD",
     "color": "Purple",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-11",
-    "type": "ROAD",
     "color": "Yellow",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-12",
-    "type": "MOUNTAIN",
     "color": "Blue",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-13",
-    "type": "MOUNTAIN",
     "color": "Blue",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-14",
-    "type": "MOUNTAIN",
     "color": "Red",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-15",
-    "type": "ROAD",
     "color": "Yellow",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-16",
-    "type": "ROAD",
     "color": "Yellow",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-17",
-    "type": "ROAD",
     "color": "Red",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-18",
-    "type": "MOUNTAIN",
     "color": "Blue",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-19",
-    "type": "ROAD",
     "color": "Blue",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-20",
-    "type": "MOUNTAIN",
     "color": "Purple",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-21",
-    "type": "ROAD",
     "color": "Red",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-22",
-    "type": "MOUNTAIN",
     "color": "Yellow",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-23",
-    "type": "MOUNTAIN",
     "color": "Red",
-    "isAvailable": true
+    "type": "MOUNTAIN"
   },
   {
+    "isAvailable": true,
     "id": "BIC-24",
-    "type": "ROAD",
     "color": "Green",
-    "isAvailable": true
+    "type": "ROAD"
   },
   {
+    "isAvailable": true,
     "id": "BIC-25",
-    "type": "ROAD",
     "color": "Red",
-    "isAvailable": true
+    "type": "ROAD"
   }
 ]
