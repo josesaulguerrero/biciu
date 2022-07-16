@@ -31,7 +31,7 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
         Path path = Paths.get("",
                 "src", "main", "java", "co", "com", "biciu", "modules", "bikes", "persistence", "data", "bikes.json");
         TypeReference<List<Bike>> reference = new TypeReference<>() {};
-        this.bikes = (List<Bike>) JSONUtils.readJSONFile(path.toAbsolutePath().toFile(), reference);
+        this.bikes = JSONUtils.readJSONFile(path.toAbsolutePath().toFile(), reference);
     }
 
     private Integer calculateCurrentId() {

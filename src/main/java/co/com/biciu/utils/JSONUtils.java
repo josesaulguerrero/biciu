@@ -9,8 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class JSONUtils {
-
-    public static Object readJSONFile(File file, TypeReference<?> type) {
+    public static<K, T extends TypeReference<K>> K readJSONFile(File file, T type) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             return mapper.readValue(new FileReader(file), type);
