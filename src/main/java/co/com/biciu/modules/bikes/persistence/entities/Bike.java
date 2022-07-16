@@ -10,7 +10,7 @@ public class Bike {
     private String color;
 
     @JsonProperty("isAvailable")
-    private Boolean isAvailable;
+    private Boolean available;
 
     @JsonProperty("type")
     private BikeType type;
@@ -20,7 +20,7 @@ public class Bike {
     public Bike(String id, String color, Boolean isAvailable, BikeType type) {
         this.id = id;
         this.color = color;
-        this.isAvailable = isAvailable;
+        this.available = isAvailable;
         this.type = type;
     }
 
@@ -32,23 +32,23 @@ public class Bike {
         return color;
     }
 
-    public Boolean getIsAvailable() {
-        return isAvailable;
+    public Boolean isAvailable() {
+        return available;
     }
 
     public BikeType getType() {
         return type;
     }
 
-    public void setIsAvailable(Boolean available) {
-        isAvailable = available;
+    public void setIsAvailable(Boolean isAvailable) {
+        available = isAvailable;
     }
     @Override
     public String toString() {
         return "Bike{" +
                 "id='" + id + '\'' +
                 ", color='" + color + '\'' +
-                ", isAvailable=" + isAvailable +
+                ", available=" + available +
                 ", type=" + type +
                 '}';
     }

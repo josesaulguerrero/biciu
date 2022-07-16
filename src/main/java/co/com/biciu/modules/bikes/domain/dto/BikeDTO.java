@@ -1,19 +1,27 @@
 package co.com.biciu.modules.bikes.domain.dto;
 
-import co.com.biciu.modules.bikes.persistence.entities.BikeType;
-
 public class BikeDTO {
+    private String bikeId;
     private String color;
     private Boolean isAvailable;
-    private BikeType type;
+    private String type;
 
     public BikeDTO() {
     }
 
-    public BikeDTO(String color, Boolean isAvailable, BikeType type) {
+    public BikeDTO(String bikeId, String color, Boolean isAvailable, String type) {
+        this.bikeId = bikeId;
         this.color = color;
         this.isAvailable = isAvailable;
         this.type = type;
+    }
+
+    public String getBikeId() {
+        return bikeId;
+    }
+
+    public void setBikeId(String bikeId) {
+        this.bikeId = bikeId;
     }
 
     public String getColor() {
@@ -32,11 +40,11 @@ public class BikeDTO {
         isAvailable = available;
     }
 
-    public BikeType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(BikeType type) {
+    public void setType(String type) {
         this.type = type;
     }
 
