@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56691b31-feb5-4af8-947c-6c15ff3989c8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/persistence/entities/TicketDate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/users/persistence/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/persistence/entities/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/users/persistence/entities/TicketDate.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -48,6 +52,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/domain" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="co.com.biciu.modules.tickets.persistence.entities" />
     </key>
   </component>
   <component name="RunManager">
