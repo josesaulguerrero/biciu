@@ -2,8 +2,10 @@ package co.com.biciu.modules.bikes.persistence.repositories;
 
 import co.com.biciu.interfaces.CRUDRepository;
 import co.com.biciu.modules.bikes.persistence.entities.Bike;
+import co.com.biciu.utils.JSONUtils;
 import co.com.biciu.utils.ReflectionUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -11,8 +13,8 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
+
 
 public class BikeRepository implements CRUDRepository<Bike, String> {
 
@@ -25,26 +27,24 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
     }
 
     private void loadObjectsInMemory() {
-        try {
-            // "" is a shortcut for the absolute path to the root folder of the project.
-            Path path = Paths.get("",
-                    "src", "main", "java", "co", "com", "biciu", "modules", "bikes", "persistence", "data", "bikes.json");
-            FileReader reader = new FileReader(new File(path.toUri()));
-            ObjectMapper mapper = new ObjectMapper();
-            bikes = mapper.readValue(reader, new TypeReference<>() {});
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        // "" is a shortcut for the absolute path to the root folder of the project.
+        Path path = Paths.get("",
+                "src", "main", "java", "co", "com", "biciu", "modules", "bikes", "persistence", "data", "bikes.json");
+        TypeReference<List<Bike>> reference = new TypeReference<>() {};
+        this.bikes = (List<Bike>) JSONUtils.readJSONFile(path.toAbsolutePath().toFile(), reference);
     }
 
     private Integer calculateCurrentId() {
-        return bikes.stream()
-                .map(
+        for (Bike bike : bikes) {
+            System.out.println("bike = " + bike);
+        }
+        return null;
+                /*.map(
                     bike -> bike.getId().replaceAll("BIC-(\\d+)", "$1")
                 )
                 .map(Integer::parseInt)
                 .max(Integer::compare)
-                .orElseThrow();
+                .orElseThrow();*/
     }
 
     private String generateNewId() {

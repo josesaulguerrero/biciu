@@ -11,7 +11,6 @@ public class Application {
     public static void main(String[] args) {
         CRUDRepository<Bike, String> repository = new BikeRepository();
         repository.findAll();
-        Bike bike = repository.save(new Bike("BIC-1", "Blue", true, BikeType.MOUNTAIN));
-        System.out.println("bike = " + bike);
+
     }
 }
