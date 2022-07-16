@@ -9,6 +9,6 @@ public class Application {
     public static void main(String[] args) {
         Repository<Bike, String> repository = new BikeRepository();
         repository.findAll();
-        repository.save(new BikeDTO());
+        // repository.save(new BikeDTO());
     }
 }
