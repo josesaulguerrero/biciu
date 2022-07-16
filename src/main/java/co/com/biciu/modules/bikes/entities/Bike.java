@@ -1,19 +1,30 @@
 package co.com.biciu.modules.bikes.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Bike {
+    @JsonProperty("id")
     String id;
+
+    @JsonProperty("color")
     String color;
+
+    @JsonProperty("isAvailable")
     Boolean isAvailable;
+
+    @JsonProperty("type")
     BikeType type;
 
-    public Bike(String id, String color, Boolean isAvailable, BikeType type) {
-        this.id = id;
+    public Bike() {}
+
+    public Bike(String color, Boolean isAvailable, BikeType type) {
         this.color = color;
         this.isAvailable = isAvailable;
         this.type = type;
     }
 
-    public Bike(String color, Boolean isAvailable, BikeType type) {
+    public Bike(String id, String color, Boolean isAvailable, BikeType type) {
+        this.id = id;
         this.color = color;
         this.isAvailable = isAvailable;
         this.type = type;
@@ -27,7 +38,7 @@ public class Bike {
         return color;
     }
 
-    public Boolean getAvailable() {
+    public Boolean getIsAvailable() {
         return isAvailable;
     }
 
@@ -35,7 +46,16 @@ public class Bike {
         return type;
     }
 
-    public void setAvailable(Boolean available) {
+    public void setIsAvailable(Boolean available) {
         isAvailable = available;
+    }
+    @Override
+    public String toString() {
+        return "Bike{" +
+                "id='" + id + '\'' +
+                ", color='" + color + '\'' +
+                ", isAvailable=" + isAvailable +
+                ", type=" + type +
+                '}';
     }
 }
