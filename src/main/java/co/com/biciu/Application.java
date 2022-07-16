@@ -1,12 +1,12 @@
 package co.com.biciu;
 
-import co.com.biciu.interfaces.CRUDRepository;
+import co.com.biciu.modules.bikes.domain.dto.BikeDTO;
+import co.com.biciu.modules.bikes.domain.services.BikeService;
 import co.com.biciu.modules.bikes.persistence.entities.Bike;
-import co.com.biciu.modules.bikes.persistence.repositories.BikeRepository;
+import co.com.biciu.modules.bikes.persistence.entities.BikeType;
 
 public class Application {
     public static void main(String[] args) {
-        CRUDRepository<Bike, String> repository = new BikeRepository();
-        System.out.println(repository.findAll());
+        BikeService service = new BikeService();
     }
 }

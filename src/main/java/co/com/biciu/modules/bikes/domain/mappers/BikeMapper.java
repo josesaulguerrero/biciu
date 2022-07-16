@@ -10,7 +10,7 @@ import java.util.Locale;
 public class BikeMapper implements BasicMapper<Bike, BikeDTO> {
     @Override
     public BikeDTO entityToDTO(Bike entity) {
-        if(entity == null) return null;
+        if (entity == null) return null;
 
         return new BikeDTO(
                 entity.getId(),
@@ -22,7 +22,9 @@ public class BikeMapper implements BasicMapper<Bike, BikeDTO> {
 
     @Override
     public Bike DTOToEntity(BikeDTO DTO) {
-        if(DTO == null) return null;
+        if (DTO == null || (DTO.getBikeId() != null && !DTO.getBikeId().matches("BIC-\\d+"))) {
+            throw new IllegalArgumentException("The given DTO must be valid, otherwise it can't be mapped to a valid entity");
+        }
 
         return new Bike(
                 DTO.getBikeId(),

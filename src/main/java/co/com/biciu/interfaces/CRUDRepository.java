@@ -1,8 +1,5 @@
 package co.com.biciu.interfaces;
 
-import java.util.List;
-import java.util.Optional;
-
 /**
  * This interface defines all the methods required to execute CRUD operations.
  * @param <T> The class you want to persist instances of.

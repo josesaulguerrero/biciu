@@ -27,6 +27,10 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
         this.currentId = calculateCurrentId();
     }
 
+    private Boolean saveChanges() {
+        return JSONUtils.writeJSONToFile(this.pathToPersistenceFile.toFile(), bikes);
+    }
+
     private void loadObjectsInMemory() {
         TypeReference<List<Bike>> reference = new TypeReference<>() {
         };
@@ -54,6 +58,10 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
         }
     }
 
+    private Boolean isValidId(String id) {
+        return id.matches("BIC-\\d+");
+    }
+
     @Override
     public List<Bike> findAll() {
         return this.bikes;
@@ -61,6 +69,9 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
 
     @Override
     public Optional<Bike> findById(String id) {
+        if(!this.isValidId(id)) {
+            throw new IllegalArgumentException("Invalid id; wrong pattern.");
+        }
         return this.bikes.stream().filter(bike -> bike.getId().equals(id)).findFirst();
     }
 
@@ -68,7 +79,7 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
     public Bike save(Bike object) {
         this.assignIdField(object);
         this.bikes.add(object);
-        boolean wasWrittenSuccessfully = JSONUtils.writeJSONToFile(this.pathToPersistenceFile.toFile(), bikes);
+        boolean wasWrittenSuccessfully = this.saveChanges();
         if (!wasWrittenSuccessfully) {
             throw new RuntimeException("Something went wrong and the object couldn't be saved. Check the Stack Trace for more information.");
         }
@@ -76,7 +87,9 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
     }
 
     private Integer indexOf(String id) {
-        Bike bike = this.findById(id).orElseThrow(() -> new IllegalArgumentException("The given id doesn't belong to any of the existent objects in the application."));
+        Bike bike = this.findById(id).orElseThrow(() -> new IllegalArgumentException(
+                "The given id doesn't belong to any of the existent objects in the application."
+        ));
         return this.bikes.indexOf(bike);
     }
 
@@ -87,6 +100,7 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
         }
         int elementIndex = this.indexOf(id);
         this.bikes.set(elementIndex, updatedObject);
+        this.saveChanges();
         return this.bikes.get(elementIndex);
     }
 
@@ -96,6 +110,7 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
         try {
             int elementIndex = this.indexOf(id);
             this.bikes.remove(elementIndex);
+            this.saveChanges();
             wasDeleted = true;
         } catch (Exception e) {
             wasDeleted = false;

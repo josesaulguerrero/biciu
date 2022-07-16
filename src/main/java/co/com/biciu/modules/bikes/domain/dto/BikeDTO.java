@@ -9,6 +9,12 @@ public class BikeDTO {
     public BikeDTO() {
     }
 
+    public BikeDTO(String color, Boolean isAvailable, String type) {
+        this.color = color;
+        this.isAvailable = isAvailable;
+        this.type = type;
+    }
+
     public BikeDTO(String bikeId, String color, Boolean isAvailable, String type) {
         this.bikeId = bikeId;
         this.color = color;

@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Bike {
     //BIC-NNN
-    @JsonProperty("id")
     @Id
+    @JsonProperty("id")
     private String id;
 
     @JsonProperty("color")
