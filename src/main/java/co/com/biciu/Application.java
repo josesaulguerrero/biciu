@@ -14,7 +14,7 @@ public class Application {
         );
         int selectedOption = UIUtils.readWithValidatorAndParser(
                 value -> NumberUtils.isParsable(value) && Range.between(1, 3).contains(Integer.parseInt(value)),
-                Integer::parseInt
+                value -> Integer.parseInt(value.trim())
         );
         callModule(selectedOption);
     }

@@ -28,12 +28,21 @@ public class BikesMain {
         );
         int selectedOption = UIUtils.readWithValidatorAndParser(
                 value -> NumberUtils.isParsable(value) && Range.between(1, 3).contains(Integer.parseInt(value)),
-                Integer::parseInt
+                value -> Integer.parseInt(value.trim())
         );
         callController(selectedOption);
     }
 
     private void callController(int option) {
-
+        switch (option) {
+            case 1:
+                bikeController.add();
+                break;
+            case 2:
+                bikeController.printAll();
+                break;
+            case 3:
+                bikeController.update();
+        }
     }
 }

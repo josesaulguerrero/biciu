@@ -22,6 +22,10 @@ public class BikeService {
         return this.repository.findAll();
     }
 
+    public Bike findById(String id) {
+        return this.repository.findById(id).orElseThrow();
+    }
+
     public Bike save(BikeDTO dto) {
         return this.repository.save(mapper.DTOToEntity(dto));
     }
