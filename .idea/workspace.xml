@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56691b31-feb5-4af8-947c-6c15ff3989c8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/persistence/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/persistence/entities/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/users/persistence/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/users/persistence/repositories/UserRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

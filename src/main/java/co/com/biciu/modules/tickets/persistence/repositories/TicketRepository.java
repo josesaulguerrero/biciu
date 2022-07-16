@@ -1,11 +1,11 @@
-package co.com.biciu.modules.users.persistence.repositories;
+package co.com.biciu.modules.tickets.persistence.repositories;
 
 import co.com.biciu.interfaces.CRUDRepository;
-import co.com.biciu.modules.users.persistence.entities.User;
-import co.com.biciu.modules.users.persistence.entities.UserType;
+import co.com.biciu.modules.tickets.persistence.entities.Ticket;
 import co.com.biciu.utils.JSONUtils;
 import co.com.biciu.utils.ReflectionUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
+
 
 import java.lang.reflect.Field;
 import java.nio.file.Path;
@@ -13,33 +13,48 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
-public class UserRepository implements CRUDRepository<User, String> {
-    private List<User> users;
+
+public class TicketRepository implements CRUDRepository<Ticket, String> {
+
+    private List<Ticket> tickets;
+    private Integer currentId;
     private final Path pathToPersistenceFile;
 
-    public UserRepository() {
+    public TicketRepository() {
         // "" is a shortcut for the absolute path to the root folder of the project.
-        this.pathToPersistenceFile = Paths.get("", "src", "main", "java", "co", "com", "biciu", "modules", "users", "persistence", "data", "users.json");
+        this.pathToPersistenceFile = Paths.get("", "src", "main", "java", "co", "com", "biciu", "modules", "tickets", "persistence", "data", "tickets.json");
         this.loadObjectsInMemory();
+        this.currentId = calculateCurrentId();
     }
 
     private Boolean saveChanges() {
-        return JSONUtils.writeJSONToFile(this.pathToPersistenceFile.toFile(), users);
+        return JSONUtils.writeJSONToFile(this.pathToPersistenceFile.toFile(), this.tickets);
     }
 
     private void loadObjectsInMemory() {
-        TypeReference<List<User>> reference = new TypeReference<>() {};
-        this.users = JSONUtils.readJSONFromFile(this.pathToPersistenceFile.toFile(), reference);
+        TypeReference<List<Ticket>> reference = new TypeReference<>() {};
+        this.tickets = JSONUtils.readJSONFromFile(this.pathToPersistenceFile.toFile(), reference);
     }
 
-    private String generateNewId(User user) {
-        return (user.getType().equals(UserType.STUDENT) ? "S" : "P").concat("-").concat(user.getDNI());
+    private Integer calculateCurrentId() {
+        return tickets
+                .stream()
+                .map(Ticket -> Ticket.getId().replaceAll("T-(\\d+)", "$1"))
+                .map(Integer::parseInt)
+                .max(Integer::compare)
+                .orElseThrow();
     }
 
-    private void assignIdField(User object) {
+    private String generateNewId() {
+        int newId = Integer.sum(this.currentId, 1);
+        this.currentId = newId;
+        return "T-".concat(String.valueOf(newId));
+    }
+
+    private void assignIdField(Ticket object) {
         try {
-            String id = generateNewId(object);
-            Field field = ReflectionUtils.getIdField(User.class);
+            String id = generateNewId();
+            Field field = ReflectionUtils.getIdField(Ticket.class);
             field.setAccessible(true);
             field.set(object, id);
         } catch (IllegalAccessException e) {
@@ -48,26 +63,26 @@ public class UserRepository implements CRUDRepository<User, String> {
     }
 
     private Boolean isValidId(String id) {
-        return id.matches("[PS]-\\w+");
+        return id.matches("T-\\d+");
     }
 
     @Override
-    public List<User> findAll() {
-        return this.users;
+    public List<Ticket> findAll() {
+        return this.tickets;
     }
 
     @Override
-    public Optional<User> findById(String id) {
+    public Optional<Ticket> findById(String id) {
         if(!this.isValidId(id)) {
             throw new IllegalArgumentException("Invalid id; wrong pattern.");
         }
-        return this.users.stream().filter(user -> user.getId().equals(id)).findFirst();
+        return this.tickets.stream().filter(ticket -> ticket.getId().equals(id)).findFirst();
     }
 
     @Override
-    public User save(User object) {
+    public Ticket save(Ticket object) {
         this.assignIdField(object);
-        this.users.add(object);
+        this.tickets.add(object);
         boolean wasWrittenSuccessfully = this.saveChanges();
         if (!wasWrittenSuccessfully) {
             throw new RuntimeException("Something went wrong and the object couldn't be saved. Check the Stack Trace for more information.");
@@ -76,21 +91,21 @@ public class UserRepository implements CRUDRepository<User, String> {
     }
 
     private Integer indexOf(String id) {
-        User user = this.findById(id).orElseThrow(() -> new IllegalArgumentException(
+        Ticket Ticket = this.findById(id).orElseThrow(() -> new IllegalArgumentException(
                 "The given id doesn't belong to any of the existent objects in the application."
         ));
-        return this.users.indexOf(user);
+        return this.tickets.indexOf(Ticket);
     }
 
     @Override
-    public User update(String id, User updatedObject) {
+    public Ticket update(String id, Ticket updatedObject) {
         if (!id.equals(updatedObject.getId())) {
             throw new IllegalArgumentException("The id given as the first argument doesn't match the id of the object passed as second argument.");
         }
         int elementIndex = this.indexOf(id);
-        this.users.set(elementIndex, updatedObject);
+        this.tickets.set(elementIndex, updatedObject);
         this.saveChanges();
-        return this.users.get(elementIndex);
+        return this.tickets.get(elementIndex);
     }
 
     @Override
@@ -98,7 +113,7 @@ public class UserRepository implements CRUDRepository<User, String> {
         boolean wasDeleted;
         try {
             int elementIndex = this.indexOf(id);
-            this.users.remove(elementIndex);
+            this.tickets.remove(elementIndex);
             this.saveChanges();
             wasDeleted = true;
         } catch (Exception e) {
