@@ -2,6 +2,7 @@ package co.com.biciu.modules.bikes.persistence.repositories;
 
 import co.com.biciu.interfaces.CRUDRepository;
 import co.com.biciu.modules.bikes.persistence.entities.Bike;
+import co.com.biciu.utils.ReflectionUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -54,11 +55,10 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
     private void assignIdField(Bike object) {
         try {
             String id = generateNewId();
-            Class<Bike> clazz = Bike.class;
-            Field field = clazz.getDeclaredField("id");
+            Field field = ReflectionUtils.getIdField(Bike.class);
             field.setAccessible(true);
             field.set(object, id);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
+        } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

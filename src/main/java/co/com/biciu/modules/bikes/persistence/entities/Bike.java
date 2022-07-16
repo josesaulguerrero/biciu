@@ -1,10 +1,12 @@
 package co.com.biciu.modules.bikes.persistence.entities;
 
+import co.com.biciu.annotations.Id;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Bike {
     //BIC-NNN
     @JsonProperty("id")
+    @Id
     private String id;
 
     @JsonProperty("color")
