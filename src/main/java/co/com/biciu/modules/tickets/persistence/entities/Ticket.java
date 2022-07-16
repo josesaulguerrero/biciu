@@ -2,20 +2,27 @@ package co.com.biciu.modules.tickets.persistence.entities;
 
 import co.com.biciu.annotations.Id;
 import co.com.biciu.modules.users.persistence.entities.User;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Ticket {
     // T-NNN
     @Id
+    @JsonProperty("id")
     private String id;
 
+    @JsonProperty("user")
     private User user;
 
+    @JsonProperty("suppliedHelmet")
     private Boolean helmetWasSupplied;
 
+    @JsonProperty("date")
     private TicketDate date;
 
+    @JsonProperty("debt")
     private Integer debt;
 
+    @JsonProperty("status")
     private TicketStatus status;
 
     public Ticket() {
