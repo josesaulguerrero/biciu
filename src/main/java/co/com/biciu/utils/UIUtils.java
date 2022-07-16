@@ -1,6 +1,7 @@
 package co.com.biciu.utils;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -9,19 +10,27 @@ public class UIUtils {
     private final static Scanner scanner = new Scanner(System.in);
 
     public static String read() {
-        return new Scanner(System.in).nextLine();
+        return scanner.nextLine();
     }
 
-    public static<T> T readWithParser(T targetClass, Function<String, T> parser) {
-        return null;
+    public static <T> T readWithParser(Function<String, T> parser) {
+        return parser.apply(read());
     }
 
-    public static String readWithValidator(Predicate<String> validator) {
-        return null;
+    public static String readWithValidator(Predicate<String> isValid) {
+        String input = null;
+        while (!isValid.test(input)) {
+            input = read();
+            if(!isValid.test(input)) {
+                System.out.println("The given option isn't valid. Please try again: ");
+            }
+        }
+        return input;
     }
 
-    public static<T> T readWithValidatorAndParser(T targetClass, Predicate<String> validator, Function<String, T> parser) {
-        return null;
+    public static <T> T readWithValidatorAndParser(Predicate<String> isValid, Function<String, T> parser) {
+        String input = readWithValidator(isValid);
+        return parser.apply(input);
     }
 
     public static void renderQuestion(String question) {
