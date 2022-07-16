@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="56691b31-feb5-4af8-947c-6c15ff3989c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/interfaces/BasicMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/interfaces/BasicMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/interfaces/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/interfaces/CRUDRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/entities/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/entities/Bike.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/repositories/BikeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/repositories/BikeRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

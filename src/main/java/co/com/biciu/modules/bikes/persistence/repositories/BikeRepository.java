@@ -51,6 +51,18 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
         return "BIC-" + newId;
     }
 
+    private void assignIdField(Bike object) {
+        try {
+            String id = generateNewId();
+            Class<Bike> clazz = Bike.class;
+            Field field = clazz.getDeclaredField("id");
+            field.setAccessible(true);
+            field.set(object, id);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public List<Bike> findAll() {
         return this.bikes;
@@ -63,16 +75,9 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
 
     @Override
     public Bike save(Bike object) {
-        String id = generateNewId();
-        Class<Bike> clazz = Bike.class;
-        try {
-            Field idField = clazz.getDeclaredField("id");
-            idField.setAccessible(true);
-            idField.set(object, id);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-        return null;
+        this.assignIdField(object);
+        this.bikes.add(object);
+        return object;
     }
 
     @Override
