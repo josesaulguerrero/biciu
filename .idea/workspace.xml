@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="56691b31-feb5-4af8-947c-6c15ff3989c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/data/bikes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/data/bikes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/entities/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/entities/Bike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/entities/BikeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/entities/BikeType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/data/bikes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/data/bikes.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +50,26 @@
       <recent name="$PROJECT_DIR$/src/main/java/co/com/biciu/modules" />
       <recent name="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.com.biciu.Application" />
+      <module name="bici_u" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.com.biciu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Application" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
