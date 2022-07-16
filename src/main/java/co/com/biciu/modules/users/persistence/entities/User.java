@@ -2,24 +2,31 @@ package co.com.biciu.modules.users.persistence.entities;
 
 import co.com.biciu.annotations.Id;
 import co.com.biciu.modules.tickets.persistence.entities.Ticket;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
 public class User {
     // P-DNI or S-DNI
     @Id
+    @JsonProperty("id")
     private String id;
 
+    @JsonProperty("DNI")
     private String DNI;
 
+    @JsonProperty("type")
     private UserType type;
 
     // name lastname
+    @JsonProperty("fullName")
     private String fullName;
 
     //over 18
+    @JsonProperty("age")
     private Integer age;
 
+    @JsonProperty("tickets")
     private List<Ticket> tickets;
 
     public User() {
