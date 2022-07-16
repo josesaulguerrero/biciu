@@ -14,11 +14,23 @@ public class TicketDate {
         this.endDate = startDate.plusHours(1);
     }
 
+    public Boolean isLate(LocalDateTime now) {
+        return now.isAfter(this.endDate);
+    }
+
     public LocalDateTime getStartDate() {
         return startDate;
     }
 
     public LocalDateTime getEndDate() {
         return endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "TicketDate{" +
+                "startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 }
