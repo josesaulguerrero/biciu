@@ -9,6 +9,10 @@ import java.util.function.Predicate;
 public class UIUtils {
     private final static Scanner scanner = new Scanner(System.in);
 
+    public static void printLineSeparator() {
+        System.out.println("==============================================================================");
+    }
+
     public static String read() {
         return scanner.nextLine();
     }
