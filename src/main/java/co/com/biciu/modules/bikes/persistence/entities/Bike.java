@@ -1,27 +1,21 @@
-package co.com.biciu.modules.bikes.entities;
+package co.com.biciu.modules.bikes.persistence.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Bike {
     @JsonProperty("id")
-    String id;
+    private String id;
 
     @JsonProperty("color")
-    String color;
+    private String color;
 
     @JsonProperty("isAvailable")
-    Boolean isAvailable;
+    private Boolean isAvailable;
 
     @JsonProperty("type")
-    BikeType type;
+    private BikeType type;
 
     public Bike() {}
-
-    public Bike(String color, Boolean isAvailable, BikeType type) {
-        this.color = color;
-        this.isAvailable = isAvailable;
-        this.type = type;
-    }
 
     public Bike(String id, String color, Boolean isAvailable, BikeType type) {
         this.id = id;

@@ -1,20 +1,15 @@
 package co.com.biciu.modules.bikes.persistence.repositories;
 
 import co.com.biciu.interfaces.Repository;
-import co.com.biciu.modules.bikes.entities.Bike;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import co.com.biciu.modules.bikes.persistence.entities.Bike;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.TreeTraversingParser;
 
 
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BikeRepository implements Repository<Bike, String> {
     @Override
