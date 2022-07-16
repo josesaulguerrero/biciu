@@ -5,8 +5,6 @@ import co.com.biciu.modules.bikes.persistence.entities.Bike;
 import co.com.biciu.utils.JSONUtils;
 import co.com.biciu.utils.ReflectionUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 import java.io.*;
@@ -20,31 +18,29 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
 
     private List<Bike> bikes;
     private Integer currentId;
+    private Path pathToPersistenceFile;
 
     public BikeRepository() {
+        // "" is a shortcut for the absolute path to the root folder of the project.
+        this.pathToPersistenceFile =  Paths.get("",
+                "src", "main", "java", "co", "com", "biciu", "modules", "bikes", "persistence", "data", "bikes.json");
         this.loadObjectsInMemory();
         this.currentId = calculateCurrentId();
     }
 
     private void loadObjectsInMemory() {
-        // "" is a shortcut for the absolute path to the root folder of the project.
-        Path path = Paths.get("",
-                "src", "main", "java", "co", "com", "biciu", "modules", "bikes", "persistence", "data", "bikes.json");
         TypeReference<List<Bike>> reference = new TypeReference<>() {};
-        this.bikes = JSONUtils.readJSONFile(path.toAbsolutePath().toFile(), reference);
+        this.bikes = JSONUtils.readJSONFromFile(this.pathToPersistenceFile.toFile(), reference);
     }
 
     private Integer calculateCurrentId() {
-        for (Bike bike : bikes) {
-            System.out.println("bike = " + bike);
-        }
-        return null;
-                /*.map(
+        return bikes.stream()
+                .map(
                     bike -> bike.getId().replaceAll("BIC-(\\d+)", "$1")
                 )
                 .map(Integer::parseInt)
                 .max(Integer::compare)
-                .orElseThrow();*/
+                .orElseThrow();
     }
 
     private String generateNewId() {
@@ -78,15 +74,7 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
     public Bike save(Bike object) {
         this.assignIdField(object);
         this.bikes.add(object);
-        Path path = Paths.get("",
-                "src", "main", "java", "co", "com", "biciu", "modules", "bikes", "persistence", "data", "bikes.json");
-        File file = new File(path.toAbsolutePath().toUri());
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            mapper.writerWithDefaultPrettyPrinter().writeValue(file, bikes);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        JSONUtils.writeJSONToFile(this.pathToPersistenceFile.toFile(), bikes);
         return object;
     }
 

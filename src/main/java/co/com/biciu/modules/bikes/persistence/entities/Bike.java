@@ -20,6 +20,12 @@ public class Bike {
 
     public Bike() {}
 
+    public Bike(String color, Boolean available, BikeType type) {
+        this.color = color;
+        this.available = available;
+        this.type = type;
+    }
+
     public Bike(String id, String color, Boolean isAvailable, BikeType type) {
         this.id = id;
         this.color = color;
