@@ -1,6 +1,7 @@
 package co.com.biciu.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * This interface defines all the methods required to execute CRUD operations.
@@ -9,8 +10,8 @@ import java.util.List;
  */
 public interface CRUDRepository<T, K> {
     List<T> findAll();
-    T findById(K id);
-    T save(T object);
-    T update(K id, T updatedObject);
+    Optional<T> findById(K id);
+    <S extends T> T save(S object);
+    <S extends T> T update(K id, S updatedObject);
     Boolean delete(K id);
 }
