@@ -49,7 +49,7 @@ public class UserMapper implements BasicMapper<User, UserDTO> {
         }
 
         return new User(
-                DTO.getUserId(),
+                DTO.getDNI(),
                 UserType.valueOf(DTO.getUserType().toUpperCase(Locale.ROOT).trim()),
                 DTO.getFullName(),
                 DTO.getAge(),

@@ -6,22 +6,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class User {
-    // P-DNI or S-DNI
     @Id
     @JsonProperty("id")
     private String id;
 
-    @JsonProperty("DNI")
+    @JsonProperty("dni")
     private String DNI;
 
     @JsonProperty("type")
     private UserType type;
 
-    // name lastname
     @JsonProperty("fullName")
     private String fullName;
 
-    //over 18
     @JsonProperty("age")
     private Integer age;
 

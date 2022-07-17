@@ -23,7 +23,7 @@ public class UIUtils {
 
     public static String readWithValidator(Predicate<String> isValid) {
         String input = null;
-        while (!isValid.test(input)) {
+        while (input == null || !isValid.test(input)) {
             input = read();
             if(!isValid.test(input)) {
                 System.out.println("The given option isn't valid. Please try again: ");

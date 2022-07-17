@@ -29,7 +29,7 @@ public class UserController {
 
     private UserDTO getUserData() {
         UIUtils.renderQuestion("What is your DNI number?");
-        String DNI = UIUtils.readWithValidator(value -> value.length() > 5);
+        String DNI = UIUtils.readWithValidator(value -> value.matches("\\d{5,10}"));
         UIUtils.renderQuestion("What type of user are you? (student/professor)");
         String type = UIUtils.readWithValidator(value -> EnumUtils.isValidEnumIgnoreCase(UserType.class, value));
         UIUtils.renderQuestion("What is your name? (name surname)");

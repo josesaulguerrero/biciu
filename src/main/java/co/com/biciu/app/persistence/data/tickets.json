@@ -1,1 +1,19 @@
-[]
+[ {
+  "id" : "T-1",
+  "user" : {
+    "dni" : "1005461056",
+    "id" : "S-1005461056",
+    "type" : "STUDENT",
+    "fullName" : "jose serrano",
+    "age" : 19,
+    "credit" : 0.0,
+    "tickets" : [ ]
+  },
+  "suppliedHelmet" : true,
+  "date" : {
+    "startDate" : [ 2022, 7, 16, 22, 37, 41, 962028000 ],
+    "endDate" : [ 2022, 7, 16, 23, 37, 41, 962028000 ]
+  },
+  "debt" : 0.0,
+  "status" : "ACTIVE"
+} ]

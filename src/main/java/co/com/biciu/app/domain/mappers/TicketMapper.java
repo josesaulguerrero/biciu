@@ -37,7 +37,6 @@ public class TicketMapper implements BasicMapper<Ticket, TicketDTO> {
         if (DTO == null || (DTO.getTicketId() != null && !DTO.getTicketId().matches("T-\\d+"))) {
             throw new IllegalArgumentException("The given DTO must be valid, otherwise it can't be mapped to a valid entity");
         }
-
         User user = this.repository.findById(DTO.getUserId()).orElseThrow(() -> new IllegalStateException("The id of this DTO doesn't belong to any of the registered users."));
         return new Ticket(
                 DTO.getTicketId(),

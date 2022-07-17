@@ -1,6 +1,8 @@
 package co.com.biciu;
 
 import co.com.biciu.app.UI.BikesMain;
+import co.com.biciu.app.UI.TicketsMain;
+import co.com.biciu.app.UI.UsersMain;
 import co.com.biciu.utils.UIUtils;
 import org.apache.commons.lang3.Range;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -31,10 +33,10 @@ public class Application {
                 BikesMain.getInstance().main();
                 break;
             case 2:
-                // call users module.
+                UsersMain.getInstance().main();
                 break;
             case 3:
-                // call tickets module.
+                TicketsMain.getInstance().main();
         }
     }
 }

@@ -1,1 +1,9 @@
-[]
+[ {
+  "dni" : "1005461056",
+  "id" : "S-1005461056",
+  "type" : "STUDENT",
+  "fullName" : "jose serrano",
+  "age" : 19,
+  "credit" : 0.0,
+  "tickets" : [ ]
+} ]

@@ -76,9 +76,7 @@ public class BikeController {
         System.out.println("The updated information is: ".concat(updatedBike.toString()));
     }
 
-    private Ticket createTicket() {
-        UIUtils.renderQuestion("What is your user Id?");
-        String userId = UIUtils.readWithValidator(value -> value.matches("[PS]-\\d+"));
+    private Ticket createTicket(String userId) {
         try {
             Ticket newTicket = this.ticketService.save(
                     new TicketDTO(userId, true, LocalDateTime.now(), 0.0, "ACTIVE")
@@ -92,9 +90,9 @@ public class BikeController {
 
     public void borrow() {
         UIUtils.renderQuestion("What is your user Id?");
-        String userId = UIUtils.readWithValidator(value -> value != null && value.matches("[PS]-\\d+"));
+        String userId = UIUtils.readWithValidator(value -> value.matches("[PS]-\\w+")).trim();
         try {
-            Ticket ticket = this.createTicket();
+            Ticket ticket = this.createTicket(userId);
             this.userService.addNewTicket(userId, ticket);
             Bike availableBike = this.service.findAvailable();
             BikeDTO dto = mapper.entityToDTO(availableBike);

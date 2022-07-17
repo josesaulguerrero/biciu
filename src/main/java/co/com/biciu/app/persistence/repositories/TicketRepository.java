@@ -32,7 +32,8 @@ public class TicketRepository implements CRUDRepository<Ticket, String> {
     }
 
     private void loadObjectsInMemory() {
-        TypeReference<List<Ticket>> reference = new TypeReference<>() {};
+        TypeReference<List<Ticket>> reference = new TypeReference<>() {
+        };
         this.tickets = JSONUtils.readJSONFromFile(this.pathToPersistenceFile.toFile(), reference);
     }
 
@@ -73,7 +74,7 @@ public class TicketRepository implements CRUDRepository<Ticket, String> {
 
     @Override
     public Optional<Ticket> findById(String id) {
-        if(!this.isValidId(id)) {
+        if (!this.isValidId(id)) {
             throw new IllegalArgumentException("Invalid id; wrong pattern.");
         }
         return this.tickets.stream().filter(ticket -> ticket.getId().equals(id)).findFirst();

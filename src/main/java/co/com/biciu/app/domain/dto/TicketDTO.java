@@ -53,4 +53,16 @@ public class TicketDTO {
     public String getTicketStatus() {
         return ticketStatus;
     }
+
+    @Override
+    public String toString() {
+        return "TicketDTO{" +
+                "ticketId='" + ticketId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", suppliedHelmet=" + suppliedHelmet +
+                ", startDate=" + startDate +
+                ", debt=" + debt +
+                ", ticketStatus='" + ticketStatus + '\'' +
+                '}';
+    }
 }
