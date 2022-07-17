@@ -5,6 +5,7 @@ import co.com.biciu.app.domain.mappers.BikeMapper;
 import co.com.biciu.app.domain.services.BikeService;
 import co.com.biciu.app.persistence.entities.Bike;
 import co.com.biciu.app.persistence.entities.BikeType;
+import co.com.biciu.app.persistence.entities.Ticket;
 import co.com.biciu.interfaces.BasicMapper;
 import co.com.biciu.utils.UIUtils;
 import org.apache.commons.lang3.EnumUtils;
@@ -12,11 +13,12 @@ import org.apache.commons.lang3.Range;
 import org.apache.commons.lang3.math.NumberUtils;
 
 public class BikeController {
-    // TODO borrow bicycle!!
+    private final TicketController ticketController;
     private final BikeService service;
     private final BasicMapper<Bike, BikeDTO> mapper;
 
     public BikeController() {
+        this.ticketController = new TicketController();
         this.service = new BikeService();
         this.mapper = new BikeMapper();
     }
@@ -63,18 +65,12 @@ public class BikeController {
                 value -> NumberUtils.isParsable(value) && Range.between(1, 2).contains(Integer.parseInt(value)),
                 value -> Integer.parseInt(value.trim())
         );
-        Bike updatedBike;
-        if(option.equals(1)) {
-            updatedBike = this.updateColor(id, bike);
-        } else {
-            updatedBike = this.updateType(id, bike);
-        }
+        Bike updatedBike = option.equals(1) ? this.updateColor(id, bike) : this.updateType(id, bike);
         System.out.println("The updated information is: ".concat(updatedBike.toString()));
     }
 
-    public void delete() {
-        String id = this.getBikeId();
-        boolean wasDeleted = this.service.delete(id);
-        System.out.println(wasDeleted ? "The bike register was successfully deleted" : "Something went wrong, please try again later.");
+    public void borrow() {
+        // TODO implement borrow
+        Ticket ticket = this.ticketController.create();
     }
 }

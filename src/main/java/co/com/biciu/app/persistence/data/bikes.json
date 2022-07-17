@@ -1,7 +1,7 @@
 [ {
   "isAvailable" : true,
   "id" : "BIC-01",
-  "color" : "Red",
+  "color" : "purple",
   "type" : "MOUNTAIN"
 }, {
   "isAvailable" : true,
