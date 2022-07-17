@@ -2,8 +2,10 @@ package co.com.biciu.app.UI.controllers;
 
 import co.com.biciu.app.domain.dto.TicketDTO;
 import co.com.biciu.app.domain.mappers.TicketMapper;
+import co.com.biciu.app.domain.services.BikeService;
 import co.com.biciu.app.domain.services.TicketService;
 import co.com.biciu.app.domain.services.UserService;
+import co.com.biciu.app.persistence.entities.Bike;
 import co.com.biciu.app.persistence.entities.Ticket;
 import co.com.biciu.app.persistence.entities.TicketStatus;
 import co.com.biciu.interfaces.BasicMapper;
@@ -14,11 +16,13 @@ import java.time.LocalDateTime;
 public class TicketController {
     private final TicketService service;
     private final UserService userService;
+    private final BikeService bikeService;
     private final BasicMapper<Ticket, TicketDTO> mapper;
 
     public TicketController() {
         this.service = new TicketService();
         this.userService = new UserService();
+        this.bikeService = new BikeService();
         this.mapper = new TicketMapper();
     }
 
@@ -41,9 +45,10 @@ public class TicketController {
         if (hasPendingTickets) {
             throw new IllegalArgumentException("The user with the given id has pending tickets. Please pay them all before requesting a new one.");
         }
+        Bike availableBike = this.bikeService.findAvailable();
         try {
             Ticket newTicket = this.service.save(
-                    new TicketDTO(userId, LocalDateTime.now(), 0.0, "ACTIVE")
+                    new TicketDTO(availableBike.getId(), userId, LocalDateTime.now(), 0.0, "ACTIVE")
             );
             System.out.println("The information of the just created ticket is: ".concat(newTicket.toString()));
             return newTicket;

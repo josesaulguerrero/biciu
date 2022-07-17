@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class TicketDTO {
     private String ticketId;
+    private String bikeId;
     private String userId;
     private LocalDateTime startDate;
     private Double debt;
@@ -12,15 +13,17 @@ public class TicketDTO {
     public TicketDTO() {
     }
 
-    public TicketDTO(String userId, LocalDateTime startDate, Double debt, String status) {
+    public TicketDTO(String bikeId, String userId, LocalDateTime startDate, Double debt, String status) {
+        this.bikeId = bikeId;
         this.userId = userId;
         this.startDate = startDate;
         this.debt = debt;
         this.ticketStatus = status;
     }
 
-    public TicketDTO(String ticketId, String userId, LocalDateTime startDate, Double debt, String ticketStatus) {
+    public TicketDTO(String ticketId, String bikeId, String userId, LocalDateTime startDate, Double debt, String ticketStatus) {
         this.ticketId = ticketId;
+        this.bikeId = bikeId;
         this.userId = userId;
         this.startDate = startDate;
         this.debt = debt;
@@ -45,6 +48,10 @@ public class TicketDTO {
 
     public String getTicketStatus() {
         return ticketStatus;
+    }
+
+    public String getBikeId() {
+        return bikeId;
     }
 
     public void setDebt(Double debt) {

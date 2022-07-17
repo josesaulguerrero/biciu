@@ -22,14 +22,14 @@ public class UserSerializer implements Serializer<User, String> {
         String stringifiedTickets = entity.getTickets()
                 .stream()
                 .map(Ticket::getId)
-                .reduce("", (accum, id) -> accum.concat(",").concat(id).concat(","));
+                .reduce("", (accum, id) -> accum.concat(id).concat(","));
 
         return entity.getId() + ";" +
                 entity.getDNI() + ";" +
                 entity.getType().name() + ";" +
                 entity.getFullName() + ";" +
                 entity.getAge() + ";" +
-                stringifiedTickets + "?";
+                "," + stringifiedTickets + "?";
     }
 
     private List<Ticket> getAssociatedTickets(String[] ids) {

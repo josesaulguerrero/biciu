@@ -24,11 +24,10 @@ public class UsersMain {
     public void main() {
         UIUtils.renderOptionsList(
                 "1. Create a new user.",
-                "2. Add credit to your account.",
-                "3. Print all users information."
+                "2. Print all users information."
         );
         int selectedOption = UIUtils.readWithValidatorAndParser(
-                value -> NumberUtils.isParsable(value) && Range.between(1, 3).contains(Integer.parseInt(value)),
+                value -> NumberUtils.isParsable(value) && Range.between(1, 2).contains(Integer.parseInt(value)),
                 value -> Integer.parseInt(value.trim())
         );
         callController(selectedOption);
@@ -40,9 +39,6 @@ public class UsersMain {
                 controller.create();
                 break;
             case 2:
-                // controller.addCredit();
-                break;
-            case 3:
                 controller.printAll();
         }
     }

@@ -12,6 +12,7 @@ public class TicketSerializer implements Serializer<Ticket, String> {
     public String serialize(Ticket entity) {
         return entity.getId() + ";" +
                 entity.getUserId() + ";" +
+                entity.getBikeId() + ";" +
                 entity.getDate().getStartDate() + ";" +
                 entity.getDebt() + ";" +
                 entity.getStatus().name() + "?";
@@ -23,9 +24,10 @@ public class TicketSerializer implements Serializer<Ticket, String> {
         return new Ticket(
                 properties[0],
                 properties[1],
-                new TicketDate(LocalDateTime.parse(properties[2])),
-                Double.parseDouble(properties[3]),
-                TicketStatus.valueOf(properties[4])
+                properties[2],
+                new TicketDate(LocalDateTime.parse(properties[3])),
+                Double.parseDouble(properties[4]),
+                TicketStatus.valueOf(properties[5])
         );
     }
 }

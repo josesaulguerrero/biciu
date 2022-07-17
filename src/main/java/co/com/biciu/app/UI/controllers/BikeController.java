@@ -87,13 +87,13 @@ public class BikeController {
 
     public void borrow() {
         try {
-            Bike availableBike = this.service.findAvailable();
             Ticket ticket = this.ticketController.create();
             this.userService.addNewTicket(ticket.getUserId(), ticket);
-            BikeDTO dto = mapper.entityToDTO(availableBike);
+            Bike givenBike = this.service.findById(ticket.getBikeId());
+            BikeDTO dto = mapper.entityToDTO(givenBike);
             dto.setAvailable(false);
-            this.service.update(availableBike.getId(), dto);
-            System.out.println("Your assigned bike is: ".concat(availableBike.toString()));
+            this.service.update(givenBike.getId(), dto);
+            System.out.println("Your assigned bike is: ".concat(givenBike.toString()));
             System.out.println("Remember to retrieve it by one hour or you'll get fees every 30 minutes!");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -111,7 +111,7 @@ public class BikeController {
         return debt;
     }
 
-    private void performUpdate(Ticket ticket) {
+    private void performUpdate(Ticket ticket, Bike bike) {
         Predicate<String> yesOrNOValidator = value -> value.toUpperCase(Locale.ROOT).trim().matches("(Y(ES)?|N(O)?)");
         Function<String, Boolean> yesOrNoParser = value -> value.toUpperCase(Locale.ROOT).trim().matches("Y(ES)?");
 
@@ -123,10 +123,15 @@ public class BikeController {
         boolean bikeDamaged = UIUtils.readWithValidatorAndParser(yesOrNOValidator, yesOrNoParser);
         Double debt = this.calculateDebt(ticket, helmetReturned, helmetDamaged, bikeDamaged);
 
-        TicketDTO dto = ticketMapper.entityToDTO(ticket);
-        dto.setTicketStatus(debt > 0 ? TicketStatus.PENDING.name() : TicketStatus.OK.name());
-        dto.setDebt(debt);
-        Ticket updatedTicket = this.ticketService.update(ticket.getId(), dto);
+        //update ticket
+        TicketDTO ticketDTO = ticketMapper.entityToDTO(ticket);
+        ticketDTO.setTicketStatus(debt > 0 ? TicketStatus.PENDING.name() : TicketStatus.OK.name());
+        ticketDTO.setDebt(debt);
+        Ticket updatedTicket = this.ticketService.update(ticket.getId(), ticketDTO);
+        //update bike data
+        BikeDTO bikeDTO = mapper.entityToDTO(bike);
+        bikeDTO.setAvailable(true);
+        this.service.update(bikeDTO.getBikeId(), bikeDTO);
         System.out.println(debt > 0
                 ? "Your debt is: ".concat(String.valueOf(updatedTicket.getDebt()))
                 : "You don't have to pay anything! Thanks for using our service :)"
@@ -138,8 +143,9 @@ public class BikeController {
         String ticketId = UIUtils.readWithValidator(value -> value.matches("T-\\d+")).trim();
         try {
             Ticket ticket = this.ticketService.findById(ticketId);
+            Bike bike = this.service.findById(ticket.getBikeId());
             if(ticket.getStatus() == TicketStatus.ACTIVE) {
-                performUpdate(ticket);
+                performUpdate(ticket, bike);
             } else {
                 System.out.println("This ticket is ".concat(ticket.getStatus().name()).concat("; the bike was already returned."));
             }
