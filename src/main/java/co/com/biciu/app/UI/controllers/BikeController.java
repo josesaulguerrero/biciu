@@ -87,9 +87,9 @@ public class BikeController {
 
     public void borrow() {
         try {
+            Bike availableBike = this.service.findAvailable();
             Ticket ticket = this.ticketController.create();
             this.userService.addNewTicket(ticket.getUserId(), ticket);
-            Bike availableBike = this.service.findAvailable();
             BikeDTO dto = mapper.entityToDTO(availableBike);
             dto.setAvailable(false);
             this.service.update(availableBike.getId(), dto);

@@ -40,8 +40,8 @@ public class UserController {
         return new UserDTO(DNI, type, fullName, age, List.of());
     }
 
-    public User create() {
-        return this.service.save(this.getUserData());
+    public void create() {
+        System.out.println(this.service.save(this.getUserData()));
     }
 
     public String getUserId() {

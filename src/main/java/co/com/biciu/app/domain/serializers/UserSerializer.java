@@ -22,7 +22,7 @@ public class UserSerializer implements Serializer<User, String> {
         String stringifiedTickets = entity.getTickets()
                 .stream()
                 .map(Ticket::getId)
-                .reduce("", (accum, id) -> accum.concat(id).concat(","));
+                .reduce("", (accum, id) -> accum.concat(",").concat(id).concat(","));
 
         return entity.getId() + ";" +
                 entity.getDNI() + ";" +
@@ -33,7 +33,6 @@ public class UserSerializer implements Serializer<User, String> {
     }
 
     private List<Ticket> getAssociatedTickets(String[] ids) {
-        System.out.println("ids.toString() = " + Arrays.toString(ids));
         return Arrays.stream(ids)
                 .filter(id -> id.matches("T-\\d+"))
                 .map(ticketService::findById)
