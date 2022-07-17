@@ -12,9 +12,6 @@ public class Ticket {
     @JsonProperty("user")
     private User user;
 
-    @JsonProperty("suppliedHelmet")
-    private Boolean helmetWasSupplied;
-
     @JsonProperty("date")
     private TicketDate date;
 
@@ -27,17 +24,16 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(User user, Boolean helmetWasSupplied, TicketDate date, Double debt, TicketStatus status) {
+    public Ticket(User user, TicketDate date, Double debt, TicketStatus status) {
         this();
         this.user = user;
-        this.helmetWasSupplied = helmetWasSupplied;
         this.date = date;
         this.debt = debt;
         this.status = status;
     }
 
-    public Ticket(String id, User user, Boolean helmetWasSupplied, TicketDate date, Double debt, TicketStatus status) {
-        this(user, helmetWasSupplied, date, debt, status);
+    public Ticket(String id, User user, TicketDate date, Double debt, TicketStatus status) {
+        this(user, date, debt, status);
         this.id = id;
     }
 
@@ -47,10 +43,6 @@ public class Ticket {
 
     public User getUser() {
         return user;
-    }
-
-    public Boolean getHelmetWasSupplied() {
-        return helmetWasSupplied;
     }
 
     public TicketDate getDate() {

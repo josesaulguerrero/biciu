@@ -24,8 +24,6 @@ public class TicketMapper implements BasicMapper<Ticket, TicketDTO> {
 
         return new TicketDTO(
                 entity.getId(),
-                entity.getUser().getId(),
-                entity.getHelmetWasSupplied(),
                 entity.getDate().getStartDate(),
                 entity.getDebt(),
                 entity.getStatus().name()
@@ -41,7 +39,6 @@ public class TicketMapper implements BasicMapper<Ticket, TicketDTO> {
         return new Ticket(
                 DTO.getTicketId(),
                 user,
-                DTO.getSuppliedHelmet(),
                 new TicketDate(DTO.getStartDate()),
                 DTO.getDebt(),
                 TicketStatus.valueOf(DTO.getTicketStatus().toUpperCase(Locale.ROOT).trim())
