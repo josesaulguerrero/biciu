@@ -36,7 +36,6 @@ public class UserService {
     }
 
     public User update(String id, User user){
-        System.out.println(id + user);
         return this.repository.update(id, user);
     }
 

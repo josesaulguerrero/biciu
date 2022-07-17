@@ -4,17 +4,17 @@
   "color" : "purple",
   "type" : "MOUNTAIN"
 }, {
-  "isAvailable" : true,
+  "isAvailable" : false,
   "id" : "BIC-02",
   "color" : "Orange",
   "type" : "MOUNTAIN"
 }, {
-  "isAvailable" : true,
+  "isAvailable" : false,
   "id" : "BIC-03",
   "color" : "Green",
   "type" : "ROAD"
 }, {
-  "isAvailable" : true,
+  "isAvailable" : false,
   "id" : "BIC-04",
   "color" : "Yellow",
   "type" : "MOUNTAIN"
@@ -123,4 +123,9 @@
   "id" : "BIC-25",
   "color" : "Red",
   "type" : "ROAD"
+}, {
+  "isAvailable" : true,
+  "id" : "BIC-26",
+  "color" : "red",
+  "type" : "MOUNTAIN"
 } ]

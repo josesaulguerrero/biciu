@@ -106,6 +106,7 @@ public class BikeController {
             dto.setAvailable(false);
             this.service.update(availableBike.getId(), dto);
             System.out.println("Your assigned bike is: ".concat(availableBike.toString()));
+            System.out.println("Remember to retrieve it by one hour or you'll get fees every 30 minutes!");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -144,6 +145,6 @@ public class BikeController {
         TicketDTO dto = ticketMapper.entityToDTO(ticket);
         dto.setDebt(debt);
         Ticket updatedTicked = this.ticketService.update(ticketId, dto);
-        System.out.println("updatedTicked = " + updatedTicked);
+        System.out.println("Your debt is: ".concat(String.valueOf(updatedTicked.getDebt())));
     }
 }

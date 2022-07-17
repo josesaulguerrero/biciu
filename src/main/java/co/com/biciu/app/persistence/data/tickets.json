@@ -1,6 +1,78 @@
 [ {
   "id" : "T-1",
   "user" : {
+    "dni" : "32432424",
+    "id" : "P-32432424",
+    "type" : "PROFESSOR",
+    "fullName" : "pepito perez",
+    "age" : 19,
+    "credit" : 0.0,
+    "tickets" : [ {
+      "id" : "T-1",
+      "user" : {
+        "dni" : "32432424",
+        "id" : "P-32432424",
+        "type" : "PROFESSOR",
+        "fullName" : "pepito perez",
+        "age" : 19,
+        "credit" : 0.0,
+        "tickets" : [ ]
+      },
+      "suppliedHelmet" : true,
+      "date" : {
+        "startDate" : [ 2022, 7, 17, 0, 46, 59, 53503000 ],
+        "endDate" : [ 2022, 7, 17, 1, 46, 59, 53503000 ]
+      },
+      "debt" : 0.0,
+      "status" : "ACTIVE"
+    }, {
+      "id" : "T-1",
+      "user" : {
+        "dni" : "32432424",
+        "id" : "P-32432424",
+        "type" : "PROFESSOR",
+        "fullName" : "pepito perez",
+        "age" : 19,
+        "credit" : 0.0,
+        "tickets" : [ {
+          "id" : "T-1",
+          "user" : {
+            "dni" : "32432424",
+            "id" : "P-32432424",
+            "type" : "PROFESSOR",
+            "fullName" : "pepito perez",
+            "age" : 19,
+            "credit" : 0.0,
+            "tickets" : [ ]
+          },
+          "suppliedHelmet" : true,
+          "date" : {
+            "startDate" : [ 2022, 7, 17, 0, 46, 59, 53503000 ],
+            "endDate" : [ 2022, 7, 17, 1, 46, 59, 53503000 ]
+          },
+          "debt" : 0.0,
+          "status" : "ACTIVE"
+        } ]
+      },
+      "suppliedHelmet" : true,
+      "date" : {
+        "startDate" : [ 2022, 7, 17, 0, 49, 7, 85991000 ],
+        "endDate" : [ 2022, 7, 17, 1, 49, 7, 85991000 ]
+      },
+      "debt" : 0.0,
+      "status" : "ACTIVE"
+    } ]
+  },
+  "suppliedHelmet" : true,
+  "date" : {
+    "startDate" : [ 2022, 7, 17, 0, 49, 7, 85991000 ],
+    "endDate" : [ 2022, 7, 17, 1, 49, 7, 85991000 ]
+  },
+  "debt" : 5.0,
+  "status" : "ACTIVE"
+}, {
+  "id" : "T-2",
+  "user" : {
     "dni" : "1005461056",
     "id" : "S-1005461056",
     "type" : "STUDENT",
@@ -29,26 +101,8 @@
   },
   "suppliedHelmet" : true,
   "date" : {
-    "startDate" : [ 2022, 7, 16, 23, 46, 20, 977074000 ],
-    "endDate" : [ 2022, 7, 17, 0, 46, 20, 977074000 ]
-  },
-  "debt" : 25.0,
-  "status" : "ACTIVE"
-}, {
-  "id" : "T-2",
-  "user" : {
-    "dni" : "1005461056",
-    "id" : "S-1005461056",
-    "type" : "STUDENT",
-    "fullName" : "jose serrano",
-    "age" : 19,
-    "credit" : 0.0,
-    "tickets" : [ ]
-  },
-  "suppliedHelmet" : true,
-  "date" : {
-    "startDate" : [ 2022, 7, 16, 23, 49, 1, 716867000 ],
-    "endDate" : [ 2022, 7, 17, 0, 49, 1, 716867000 ]
+    "startDate" : [ 2022, 7, 17, 0, 51, 20, 140900000 ],
+    "endDate" : [ 2022, 7, 17, 1, 51, 20, 140900000 ]
   },
   "debt" : 0.0,
   "status" : "ACTIVE"
