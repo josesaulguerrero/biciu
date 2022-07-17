@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class User {
-    // TODO add credit field
     // P-DNI or S-DNI
     @Id
     @JsonProperty("id")
@@ -25,6 +24,9 @@ public class User {
     //over 18
     @JsonProperty("age")
     private Integer age;
+
+    @JsonProperty("credit")
+    private Double credit;
 
     @JsonProperty("tickets")
     private List<Ticket> tickets;

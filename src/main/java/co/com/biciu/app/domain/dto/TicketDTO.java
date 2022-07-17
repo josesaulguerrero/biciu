@@ -7,13 +7,13 @@ public class TicketDTO {
     private String userId;
     private Boolean suppliedHelmet;
     private LocalDateTime startDate;
-    private Integer debt;
+    private Double debt;
     private String ticketStatus;
 
     public TicketDTO() {
     }
 
-    public TicketDTO(String userId, Boolean suppliedHelmet, LocalDateTime startDate, Integer debt, String status) {
+    public TicketDTO(String userId, Boolean suppliedHelmet, LocalDateTime startDate, Double debt, String status) {
         this.userId = userId;
         this.suppliedHelmet = suppliedHelmet;
         this.startDate = startDate;
@@ -21,7 +21,7 @@ public class TicketDTO {
         this.ticketStatus = status;
     }
 
-    public TicketDTO(String ticketId, String userId, Boolean suppliedHelmet, LocalDateTime startDate, Integer debt, String ticketStatus) {
+    public TicketDTO(String ticketId, String userId, Boolean suppliedHelmet, LocalDateTime startDate, Double debt, String ticketStatus) {
         this.ticketId = ticketId;
         this.userId = userId;
         this.suppliedHelmet = suppliedHelmet;
@@ -46,7 +46,7 @@ public class TicketDTO {
         return startDate;
     }
 
-    public Integer getDebt() {
+    public Double getDebt() {
         return debt;
     }
 

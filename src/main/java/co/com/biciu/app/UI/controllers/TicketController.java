@@ -27,7 +27,7 @@ public class TicketController {
         String userId = UIUtils.readWithValidator(value -> value.matches("[PS]-\\d+"));
         // TODO validate user id
         Ticket newTicket = this.service.save(
-                new TicketDTO(userId, true, LocalDateTime.now(), 0, "ACTIVE")
+                new TicketDTO(userId, true, LocalDateTime.now(), 0.0, "ACTIVE")
         );
         System.out.println("The information of the just created ticket is: ".concat(newTicket.toString()));
     }

@@ -19,7 +19,7 @@ public class Ticket {
     private TicketDate date;
 
     @JsonProperty("debt")
-    private Integer debt;
+    private Double debt;
 
     @JsonProperty("status")
     private TicketStatus status;
@@ -27,7 +27,7 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(User user, Boolean helmetWasSupplied, TicketDate date, Integer debt, TicketStatus status) {
+    public Ticket(User user, Boolean helmetWasSupplied, TicketDate date, Double debt, TicketStatus status) {
         this.user = user;
         this.helmetWasSupplied = helmetWasSupplied;
         this.date = date;
@@ -35,7 +35,7 @@ public class Ticket {
         this.status = status;
     }
 
-    public Ticket(String id, User user, Boolean helmetWasSupplied, TicketDate date, Integer debt, TicketStatus status) {
+    public Ticket(String id, User user, Boolean helmetWasSupplied, TicketDate date, Double debt, TicketStatus status) {
         this.id = id;
         this.user = user;
         this.helmetWasSupplied = helmetWasSupplied;
@@ -60,7 +60,7 @@ public class Ticket {
         return date;
     }
 
-    public Integer getDebt() {
+    public Double getDebt() {
         return debt;
     }
 
@@ -68,7 +68,7 @@ public class Ticket {
         return status;
     }
 
-    public void setDebt(Integer debt) {
+    public void setDebt(Double debt) {
         this.debt = debt;
     }
 
