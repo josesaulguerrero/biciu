@@ -34,20 +34,22 @@ public class User {
     public User() {
     }
 
-    public User(String DNI, UserType type, String fullName, Integer age, List<Ticket> tickets) {
+    public User(String DNI, UserType type, String fullName, Integer age, Double credit, List<Ticket> tickets) {
         this.DNI = DNI;
         this.type = type;
         this.fullName = fullName;
         this.age = age;
+        this.credit = credit;
         this.tickets = tickets;
     }
 
-    public User(String id, String DNI, UserType type, String fullName, Integer age, List<Ticket> tickets) {
+    public User(String id, String DNI, UserType type, String fullName, Integer age, Double credit, List<Ticket> tickets) {
         this.id = id;
         this.DNI = DNI;
         this.type = type;
         this.fullName = fullName;
         this.age = age;
+        this.credit = credit;
         this.tickets = tickets;
     }
 
@@ -73,6 +75,14 @@ public class User {
 
     public Integer getAge() {
         return age;
+    }
+
+    public Double getCredit() {
+        return credit;
+    }
+
+    public void setCredit(Double credit) {
+        this.credit = credit;
     }
 
     public List<Ticket> getTickets() {
