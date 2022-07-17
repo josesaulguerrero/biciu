@@ -7,10 +7,11 @@
     <list default="true" id="56691b31-feb5-4af8-947c-6c15ff3989c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/TicketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/dto/TicketDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/dto/TicketDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/mappers/TicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/mappers/TicketMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/mappers/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/mappers/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

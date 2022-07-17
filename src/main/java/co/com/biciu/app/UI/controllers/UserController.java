@@ -1,9 +1,7 @@
 package co.com.biciu.app.UI.controllers;
 
 import co.com.biciu.app.domain.dto.UserDTO;
-import co.com.biciu.app.domain.mappers.UserMapper;
 import co.com.biciu.app.domain.services.UserService;
-import co.com.biciu.app.persistence.entities.Ticket;
 import co.com.biciu.app.persistence.entities.User;
 import co.com.biciu.app.persistence.entities.UserType;
 import co.com.biciu.utils.UIUtils;
@@ -39,7 +37,7 @@ public class UserController {
                 value -> NumberUtils.isParsable(value) && Integer.parseInt(value.trim()) > 18,
                 Integer::parseInt
         );
-        return new UserDTO(DNI, type, fullName, age, 0.0, List.of());
+        return new UserDTO(DNI, type, fullName, age, List.of());
     }
 
     public User create() {

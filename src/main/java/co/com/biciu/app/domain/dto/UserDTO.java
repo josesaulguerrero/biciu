@@ -8,28 +8,25 @@ public class UserDTO {
     private String userType;
     private String fullName;
     private Integer age;
-    private Double credit;
     private List<String> ticketsIds;
 
     public UserDTO() {
     }
 
-    public UserDTO(String DNI, String userType, String fullName, Integer age, Double credit, List<String> ticketsIds) {
+    public UserDTO(String DNI, String userType, String fullName, Integer age, List<String> ticketsIds) {
         this.DNI = DNI;
         this.userType = userType;
         this.fullName = fullName;
         this.age = age;
-        this.credit = credit;
         this.ticketsIds = ticketsIds;
     }
 
-    public UserDTO(String userId, String DNI, String userType, String fullName, Integer age, Double credit, List<String> ticketsIds) {
+    public UserDTO(String userId, String DNI, String userType, String fullName, Integer age, List<String> ticketsIds) {
         this.userId = userId;
         this.DNI = DNI;
         this.userType = userType;
         this.fullName = fullName;
         this.age = age;
-        this.credit = credit;
         this.ticketsIds = ticketsIds;
     }
 
@@ -57,15 +54,8 @@ public class UserDTO {
         return age;
     }
 
-    public Double getCredit() {
-        return credit;
-    }
-
     public List<String> getTicketsIds() {
         return ticketsIds;
     }
 
-    public void setCredit(Double credit) {
-        this.credit = credit;
-    }
 }

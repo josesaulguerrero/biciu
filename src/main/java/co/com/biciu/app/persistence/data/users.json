@@ -4,6 +4,5 @@
   "type" : "STUDENT",
   "fullName" : "Jose Serrano",
   "age" : 19,
-  "credit" : 0.0,
   "tickets" : [ ]
 } ]

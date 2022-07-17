@@ -33,7 +33,6 @@ public class UserMapper implements BasicMapper<User, UserDTO> {
                 entity.getType().name(),
                 entity.getFullName(),
                 entity.getAge(),
-                entity.getCredit(),
                 getTicketsIds(entity.getTickets())
         );
     }
@@ -53,7 +52,6 @@ public class UserMapper implements BasicMapper<User, UserDTO> {
                 UserType.valueOf(DTO.getUserType().toUpperCase(Locale.ROOT).trim()),
                 DTO.getFullName(),
                 DTO.getAge(),
-                DTO.getCredit(),
                 getTicketsFromIds(DTO.getTicketsIds())
         );
     }

@@ -4,31 +4,27 @@ import co.com.biciu.app.UI.BikesMain;
 import co.com.biciu.app.UI.TicketsMain;
 import co.com.biciu.app.UI.UsersMain;
 import co.com.biciu.app.domain.serializers.TicketSerializer;
+import co.com.biciu.app.domain.serializers.UserSerializer;
 import co.com.biciu.app.persistence.entities.*;
 import co.com.biciu.interfaces.Serializer;
-import co.com.biciu.utils.UIUtils;
-import org.apache.commons.lang3.Range;
-import org.apache.commons.lang3.math.NumberUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Serializer<Ticket, String> ticketSerializer= new TicketSerializer();
+        Serializer<User, String> userSerializer = new UserSerializer();
         User user = new User(
                 "S-1005461056",
                 "1005461056",
                 UserType.STUDENT,
                 "Jose Serrano",
                 19,
-                0.0,
                 List.of()
         );
-        Ticket ticket = new Ticket("T-01", user, new TicketDate(LocalDateTime.now()), 0.0, TicketStatus.ACTIVE);
-        String serializedObject = ticketSerializer.serialize(ticket);
+        String serializedObject = userSerializer.serialize(user);
         System.out.println("serializedObject = " + serializedObject);
-        Ticket deserializedObject = ticketSerializer.deserialize(serializedObject);
+        User deserializedObject = userSerializer.deserialize(serializedObject);
         System.out.println("deserializedObject = " + deserializedObject);
 
         /*Integer selectedOption = null;
