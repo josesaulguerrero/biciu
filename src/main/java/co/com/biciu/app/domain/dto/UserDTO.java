@@ -33,6 +33,10 @@ public class UserDTO {
         this.ticketsIds = ticketsIds;
     }
 
+    public void addTicketId(String ticketId) {
+        this.ticketsIds.add(ticketId);
+    }
+
     public String getUserId() {
         return userId;
     }
@@ -63,9 +67,5 @@ public class UserDTO {
 
     public void setCredit(Double credit) {
         this.credit = credit;
-    }
-
-    public void setTicketsIds(List<String> ticketsIds) {
-        this.ticketsIds = ticketsIds;
     }
 }

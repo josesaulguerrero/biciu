@@ -6,6 +6,7 @@ import co.com.biciu.app.domain.services.BikeService;
 import co.com.biciu.app.persistence.entities.Bike;
 import co.com.biciu.app.persistence.entities.BikeType;
 import co.com.biciu.app.persistence.entities.Ticket;
+import co.com.biciu.app.persistence.entities.User;
 import co.com.biciu.interfaces.BasicMapper;
 import co.com.biciu.utils.UIUtils;
 import org.apache.commons.lang3.EnumUtils;
@@ -14,11 +15,13 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 public class BikeController {
     private final TicketController ticketController;
+    private final UserController userController;
     private final BikeService service;
     private final BasicMapper<Bike, BikeDTO> mapper;
 
     public BikeController() {
         this.ticketController = new TicketController();
+        this.userController = new UserController();
         this.service = new BikeService();
         this.mapper = new BikeMapper();
     }
@@ -71,6 +74,8 @@ public class BikeController {
 
     public void borrow() {
         // TODO implement borrow
+        String userId = this.userController.getUserId();
         Ticket ticket = this.ticketController.create();
+        this.userController.addNewTicket(userId, ticket);
     }
 }
