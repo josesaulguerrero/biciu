@@ -22,8 +22,7 @@ public class UserSerializer implements Serializer<User, String> {
         String stringifiedTickets = entity.getTickets()
                 .stream()
                 .map(Ticket::getId)
-                .reduce(" ", (accum, id) -> accum.concat("-").concat(id));
-                // the empty space helps avoid outOfBoundsException
+                .reduce("", (accum, id) -> accum.concat(id).concat(","));
 
         return entity.getId() + ";" +
                 entity.getDNI() + ";" +
@@ -34,6 +33,7 @@ public class UserSerializer implements Serializer<User, String> {
     }
 
     private List<Ticket> getAssociatedTickets(String[] ids) {
+        System.out.println("ids.toString() = " + Arrays.toString(ids));
         return Arrays.stream(ids)
                 .filter(id -> id.matches("T-\\d+"))
                 .map(ticketService::findById)
@@ -43,7 +43,7 @@ public class UserSerializer implements Serializer<User, String> {
     @Override
     public User deserialize(String serializedObject) {
         String[] properties = serializedObject.split(";");
-        List<Ticket> associatedTickets = getAssociatedTickets(properties[5].split("-"));
+        List<Ticket> associatedTickets = getAssociatedTickets(properties[5].split(","));
         return new User(
                 properties[0],
                 properties[1],
