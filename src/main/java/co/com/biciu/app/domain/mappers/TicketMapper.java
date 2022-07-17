@@ -1,5 +1,7 @@
 package co.com.biciu.app.domain.mappers;
 
+import co.com.biciu.app.domain.services.UserService;
+import co.com.biciu.app.persistence.entities.User;
 import co.com.biciu.interfaces.BasicMapper;
 import co.com.biciu.app.domain.dto.TicketDTO;
 import co.com.biciu.app.persistence.entities.Ticket;
@@ -9,6 +11,12 @@ import co.com.biciu.app.persistence.entities.TicketStatus;
 import java.util.Locale;
 
 public class TicketMapper implements BasicMapper<Ticket, TicketDTO> {
+    private final UserService service;
+
+    public TicketMapper() {
+        this.service = new UserService();
+    }
+
     @Override
     public TicketDTO entityToDTO(Ticket entity) {
         if (entity == null) return null;
@@ -28,10 +36,10 @@ public class TicketMapper implements BasicMapper<Ticket, TicketDTO> {
             throw new IllegalArgumentException("The given DTO must be valid, otherwise it can't be mapped to a valid entity");
         }
 
-        // TODO get user from user repository.
+        User user = service.findById(DTO.getUserId());
         return new Ticket(
                 DTO.getTicketId(),
-                null,
+                user,
                 DTO.getSuppliedHelmet(),
                 new TicketDate(DTO.getStartDate()),
                 DTO.getDebt(),
