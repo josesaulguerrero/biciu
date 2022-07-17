@@ -27,6 +27,10 @@ public class UserService {
         return this.repository.findById(id).orElseThrow();
     }
 
+    public Boolean exists(String id) {
+        return this.findById(id) != null;
+    }
+
     public List<User> findManyById(List<String> ids) {
         return ids.stream().map(this::findById).collect(Collectors.toList());
     }
