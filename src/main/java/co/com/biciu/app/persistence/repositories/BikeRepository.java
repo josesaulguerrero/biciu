@@ -42,7 +42,10 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
 
     private void loadObjectsInMemory() {
         String content = FileUtils.readFromFile(this.pathToPersistenceFile.toFile());
-        bikes = Arrays.stream(content.split("\\?")).map(serializer::deserialize).collect(Collectors.toList());
+        bikes = Arrays.stream(content.split("\\?"))
+                .filter(line -> !line.isEmpty())
+                .map(serializer::deserialize)
+                .collect(Collectors.toList());
     }
 
     private Integer calculateCurrentId() {

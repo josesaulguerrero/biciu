@@ -38,7 +38,10 @@ public class TicketRepository implements CRUDRepository<Ticket, String> {
 
     private void loadObjectsInMemory() {
         String content = FileUtils.readFromFile(this.pathToPersistenceFile.toFile());
-        this.tickets = Arrays.stream(content.split("\\?")).map(serializer::deserialize).collect(Collectors.toList());
+        this.tickets = Arrays.stream(content.trim().split("\\?"))
+                .filter(line -> !line.isEmpty())
+                .map(serializer::deserialize)
+                .collect(Collectors.toList());
     }
 
     private Integer calculateCurrentId() {

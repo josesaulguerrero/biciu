@@ -18,7 +18,6 @@ import org.apache.commons.lang3.Range;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -89,7 +88,7 @@ public class BikeController {
     public void borrow() {
         try {
             Ticket ticket = this.ticketController.create();
-            this.userService.addNewTicket(ticket.getUser().getId(), ticket);
+            this.userService.addNewTicket(ticket.getUserId(), ticket);
             Bike availableBike = this.service.findAvailable();
             BikeDTO dto = mapper.entityToDTO(availableBike);
             dto.setAvailable(false);
