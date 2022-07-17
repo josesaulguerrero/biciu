@@ -1,17 +1,20 @@
 package co.com.biciu.app.persistence.repositories;
 
+import co.com.biciu.app.domain.serializers.BikeSerializer;
 import co.com.biciu.interfaces.CRUDRepository;
 import co.com.biciu.app.persistence.entities.Bike;
-import co.com.biciu.utils.JSONUtils;
+import co.com.biciu.interfaces.Serializer;
+import co.com.biciu.utils.FileUtils;
 import co.com.biciu.utils.ReflectionUtils;
-import com.fasterxml.jackson.core.type.TypeReference;
 
 
 import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 public class BikeRepository implements CRUDRepository<Bike, String> {
@@ -19,22 +22,27 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
     private List<Bike> bikes;
     private Integer currentId;
     private final Path pathToPersistenceFile;
+    private final Serializer<Bike, String> serializer;
 
     public BikeRepository() {
+        this.serializer = new BikeSerializer();
         // "" is a shortcut for the absolute path to the root folder of the project.
-        this.pathToPersistenceFile = Paths.get("", "src", "main", "java", "co", "com", "biciu", "app", "persistence", "data", "bikes.json");
+        this.pathToPersistenceFile = Paths.get("", "src", "main", "java", "co", "com", "biciu", "app", "persistence", "data", "bikes.txt");
         this.loadObjectsInMemory();
         this.currentId = calculateCurrentId();
     }
 
-    private Boolean saveChanges() {
-        return JSONUtils.writeJSONToFile(this.pathToPersistenceFile.toFile(), bikes);
+    private void saveChanges() {
+        FileUtils
+                .writeToFile(
+                        this.pathToPersistenceFile.toFile(),
+                        bikes.stream().map(serializer::serialize).collect(Collectors.joining())
+                );
     }
 
     private void loadObjectsInMemory() {
-        TypeReference<List<Bike>> reference = new TypeReference<>() {
-        };
-        this.bikes = JSONUtils.readJSONFromFile(this.pathToPersistenceFile.toFile(), reference);
+        String content = FileUtils.readFromFile(this.pathToPersistenceFile.toFile());
+        bikes = Arrays.stream(content.split("\\?")).map(serializer::deserialize).collect(Collectors.toList());
     }
 
     private Integer calculateCurrentId() {
@@ -79,10 +87,7 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
     public Bike save(Bike object) {
         this.assignIdField(object);
         this.bikes.add(object);
-        boolean wasWrittenSuccessfully = this.saveChanges();
-        if (!wasWrittenSuccessfully) {
-            throw new RuntimeException("Something went wrong and the object couldn't be saved. Check the Stack Trace for more information.");
-        }
+        this.saveChanges();
         return object;
     }
 

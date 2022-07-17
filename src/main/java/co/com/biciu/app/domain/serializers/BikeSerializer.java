@@ -4,13 +4,15 @@ import co.com.biciu.app.persistence.entities.Bike;
 import co.com.biciu.app.persistence.entities.BikeType;
 import co.com.biciu.interfaces.Serializer;
 
+import java.util.Arrays;
+
 public class BikeSerializer implements Serializer<Bike, String> {
     @Override
     public String serialize(Bike entity) {
         return entity.getId() + ";" +
                 entity.getColor() + ";" +
                 entity.isAvailable() + ";" +
-                entity.getType().name() + ";";
+                entity.getType().name() + "?";
     }
 
     @Override

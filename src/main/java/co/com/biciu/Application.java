@@ -7,27 +7,16 @@ import co.com.biciu.app.domain.serializers.TicketSerializer;
 import co.com.biciu.app.domain.serializers.UserSerializer;
 import co.com.biciu.app.persistence.entities.*;
 import co.com.biciu.interfaces.Serializer;
+import co.com.biciu.utils.UIUtils;
+import org.apache.commons.lang3.Range;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Serializer<User, String> userSerializer = new UserSerializer();
-        User user = new User(
-                "S-1005461056",
-                "1005461056",
-                UserType.STUDENT,
-                "Jose Serrano",
-                19,
-                List.of()
-        );
-        String serializedObject = userSerializer.serialize(user);
-        System.out.println("serializedObject = " + serializedObject);
-        User deserializedObject = userSerializer.deserialize(serializedObject);
-        System.out.println("deserializedObject = " + deserializedObject);
-
-        /*Integer selectedOption = null;
+        Integer selectedOption = null;
         while (selectedOption == null || selectedOption != 0) {
             UIUtils.renderOptionsList(
                     "Which module do you want to visit? (Enter the number)",
@@ -42,7 +31,7 @@ public class Application {
             );
             callModule(selectedOption);
             UIUtils.printLineSeparator();
-        }*/
+        }
     }
 
     private static void callModule(int option) {
