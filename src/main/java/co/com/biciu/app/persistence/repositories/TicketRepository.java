@@ -1,17 +1,19 @@
 package co.com.biciu.app.persistence.repositories;
 
+import co.com.biciu.app.domain.serializers.TicketSerializer;
 import co.com.biciu.interfaces.CRUDRepository;
 import co.com.biciu.app.persistence.entities.Ticket;
-import co.com.biciu.utils.JSONUtils;
+import co.com.biciu.interfaces.Serializer;
+import co.com.biciu.utils.FileUtils;
 import co.com.biciu.utils.ReflectionUtils;
-import com.fasterxml.jackson.core.type.TypeReference;
-
 
 import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 public class TicketRepository implements CRUDRepository<Ticket, String> {
@@ -19,22 +21,24 @@ public class TicketRepository implements CRUDRepository<Ticket, String> {
     private List<Ticket> tickets;
     private Integer currentId;
     private final Path pathToPersistenceFile;
+    private final Serializer<Ticket, String> serializer;
 
     public TicketRepository() {
+        this.serializer = new TicketSerializer();
         // "" is a shortcut for the absolute path to the root folder of the project.
-        this.pathToPersistenceFile = Paths.get("", "src", "main", "java", "co", "com", "biciu", "app", "persistence", "data", "tickets.json");
+        this.pathToPersistenceFile = Paths.get("", "src", "main", "java", "co", "com", "biciu", "app", "persistence", "data", "tickets.txt");
         this.loadObjectsInMemory();
         this.currentId = calculateCurrentId();
     }
 
-    private Boolean saveChanges() {
-        return JSONUtils.writeJSONToFile(this.pathToPersistenceFile.toFile(), this.tickets);
+    private void saveChanges() {
+        String serializedTickets = this.tickets.stream().map(serializer::serialize).collect(Collectors.joining());
+        FileUtils.writeToFile(this.pathToPersistenceFile.toFile(), serializedTickets);
     }
 
     private void loadObjectsInMemory() {
-        TypeReference<List<Ticket>> reference = new TypeReference<>() {
-        };
-        this.tickets = JSONUtils.readJSONFromFile(this.pathToPersistenceFile.toFile(), reference);
+        String content = FileUtils.readFromFile(this.pathToPersistenceFile.toFile());
+        this.tickets = Arrays.stream(content.split("\\?")).map(serializer::deserialize).collect(Collectors.toList());
     }
 
     private Integer calculateCurrentId() {
@@ -87,10 +91,7 @@ public class TicketRepository implements CRUDRepository<Ticket, String> {
         this.loadObjectsInMemory();
         this.assignIdField(object);
         this.tickets.add(object);
-        boolean wasWrittenSuccessfully = this.saveChanges();
-        if (!wasWrittenSuccessfully) {
-            throw new RuntimeException("Something went wrong and the object couldn't be saved. Check the Stack Trace for more information.");
-        }
+        this.saveChanges();
         return object;
     }
 

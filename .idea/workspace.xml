@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="56691b31-feb5-4af8-947c-6c15ff3989c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/serializers/TicketSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/serializers/TicketSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/serializers/UserSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/serializers/UserSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/tickets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/tickets.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/repositories/TicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/repositories/TicketRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
