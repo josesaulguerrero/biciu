@@ -1,2 +1,2 @@
 
-BIC-1;red;false;MOUNTAIN?
+BIC-1;red ;true;ROAD?
