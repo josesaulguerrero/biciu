@@ -3,12 +3,12 @@ package co.com.biciu.modules.tickets.domain.dto;
 import java.time.LocalDateTime;
 
 public class TicketDTO {
-    private String id;
+    private String ticketId;
     private String userId;
     private Boolean suppliedHelmet;
     private LocalDateTime startDate;
     private Integer debt;
-    private String status;
+    private String ticketStatus;
 
     public TicketDTO() {
     }
@@ -17,7 +17,7 @@ public class TicketDTO {
         this.suppliedHelmet = suppliedHelmet;
         this.startDate = startDate;
         this.debt = debt;
-        this.status = status;
+        this.ticketStatus = status;
     }
 
     public TicketDTO(String userId, Boolean suppliedHelmet, LocalDateTime startDate, Integer debt, String status) {
@@ -25,11 +25,11 @@ public class TicketDTO {
         this.suppliedHelmet = suppliedHelmet;
         this.startDate = startDate;
         this.debt = debt;
-        this.status = status;
+        this.ticketStatus = status;
     }
 
-    public String getId() {
-        return id;
+    public String getTicketId() {
+        return ticketId;
     }
 
     public String getUserId() {
@@ -48,15 +48,7 @@ public class TicketDTO {
         return debt;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setDebt(Integer debt) {
-        this.debt = debt;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public String getTicketStatus() {
+        return ticketStatus;
     }
 }
