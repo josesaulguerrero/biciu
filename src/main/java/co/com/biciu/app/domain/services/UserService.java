@@ -35,10 +35,14 @@ public class UserService {
         return this.repository.update(id, mapper.DTOToEntity(dto));
     }
 
+    public User update(String id, User user){
+        System.out.println(id + user);
+        return this.repository.update(id, user);
+    }
+
     public User addNewTicket(String id, Ticket ticket) {
         User user = this.findById(id);
-        UserDTO dto = mapper.entityToDTO(user);
-        dto.addTicketId(ticket.getId());
-        return this.update(id, dto);
+        user.addTicket(ticket);
+        return this.update(id, user);
     }
 }

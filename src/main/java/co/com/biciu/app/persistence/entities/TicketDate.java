@@ -15,7 +15,7 @@ public class TicketDate {
     }
 
     public Boolean isLate(LocalDateTime now) {
-        return now.isAfter(this.endDate);
+        return !this.endDate.isBefore(now);
     }
 
     public LocalDateTime getStartDate() {

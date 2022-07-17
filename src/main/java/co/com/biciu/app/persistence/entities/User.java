@@ -1,6 +1,8 @@
 package co.com.biciu.app.persistence.entities;
 
 import co.com.biciu.annotations.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -27,6 +29,7 @@ public class User {
 
     @JsonProperty("tickets")
     private List<Ticket> tickets;
+    // TODO refactor elements to ids
 
     public User() {
     }

@@ -22,13 +22,14 @@ public class BikesMain {
 
     public void main() {
         UIUtils.renderOptionsList(
-                "1. Add a new bike to the register.",
-                "2. Print all the bikes information.",
-                "3. Update a bike information.",
-                "4. Borrow a bike."
+                "1. Add a new bike.",
+                "2. Print all bikes registers.",
+                "3. Update a bike.",
+                "4. Borrow a bike.",
+                "5. Return bike."
         );
         int selectedOption = UIUtils.readWithValidatorAndParser(
-                value -> NumberUtils.isParsable(value) && Range.between(1, 4).contains(Integer.parseInt(value)),
+                value -> NumberUtils.isParsable(value) && Range.between(1, 5).contains(Integer.parseInt(value)),
                 value -> Integer.parseInt(value.trim())
         );
         callController(selectedOption);
@@ -47,6 +48,9 @@ public class BikesMain {
                 break;
             case 4:
                 bikeController.borrow();
+                break;
+            case 5:
+                bikeController.returnBike();
         }
     }
 }

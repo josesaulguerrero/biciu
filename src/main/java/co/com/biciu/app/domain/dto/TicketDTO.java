@@ -54,6 +54,14 @@ public class TicketDTO {
         return ticketStatus;
     }
 
+    public void setDebt(Double debt) {
+        this.debt = debt;
+    }
+
+    public void setTicketStatus(String ticketStatus) {
+        this.ticketStatus = ticketStatus;
+    }
+
     @Override
     public String toString() {
         return "TicketDTO{" +

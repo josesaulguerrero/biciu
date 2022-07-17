@@ -1,6 +1,8 @@
 package co.com.biciu.app.persistence.entities;
 
 import co.com.biciu.annotations.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Ticket {

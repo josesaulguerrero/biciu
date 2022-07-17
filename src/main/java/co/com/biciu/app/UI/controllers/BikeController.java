@@ -3,6 +3,7 @@ package co.com.biciu.app.UI.controllers;
 import co.com.biciu.app.domain.dto.BikeDTO;
 import co.com.biciu.app.domain.dto.TicketDTO;
 import co.com.biciu.app.domain.mappers.BikeMapper;
+import co.com.biciu.app.domain.mappers.TicketMapper;
 import co.com.biciu.app.domain.services.BikeService;
 import co.com.biciu.app.domain.services.TicketService;
 import co.com.biciu.app.domain.services.UserService;
@@ -16,11 +17,16 @@ import org.apache.commons.lang3.Range;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class BikeController {
     private final BikeService service;
     private final UserService userService;
     private final TicketService ticketService;
+    private final BasicMapper<Ticket, TicketDTO> ticketMapper;
     private final BasicMapper<Bike, BikeDTO> mapper;
 
     public BikeController() {
@@ -28,6 +34,7 @@ public class BikeController {
         this.userService = new UserService();
         this.ticketService = new TicketService();
         this.mapper = new BikeMapper();
+        this.ticketMapper = new TicketMapper();
     }
 
     public void printAll() {
@@ -102,5 +109,41 @@ public class BikeController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private int calculateThirtyMinuteLapses(LocalDateTime start, LocalDateTime now) {
+        return Math.toIntExact(start.until(now, ChronoUnit.MINUTES) / 30);
+    }
+
+    private Double calculateDebt(Ticket ticket, boolean helmetReturned, boolean helmetDamaged, boolean bikeDamaged) {
+        double debt = 0.0;
+        LocalDateTime now = LocalDateTime.now();
+        boolean isLate = ticket.getDate().isLate(now);
+        debt += isLate ? calculateThirtyMinuteLapses(ticket.getDate().getStartDate(), now) * 3 : 0.0;
+        debt += !helmetReturned ? 5 : 0.0;
+        debt += helmetDamaged ? 5 : 0.0;
+        debt += bikeDamaged ? 5 : 0.0;
+        return debt;
+    }
+
+    public void returnBike() {
+        Predicate<String> yesOrNOValidator = value -> value.toUpperCase(Locale.ROOT).trim().matches("(Y(ES)?|N(O)?)");
+        Function<String, Boolean> yesOrNoParser = value -> value.toUpperCase(Locale.ROOT).trim().matches("Y(ES)?");
+
+        UIUtils.renderQuestion("What is your ticket Id?");
+        String ticketId = UIUtils.readWithValidator(value -> value.matches("T-\\d+")).trim();
+        Ticket ticket = this.ticketService.findById(ticketId);
+        UIUtils.renderQuestion("Was the helmet returned? (Y/n)");
+        boolean helmetReturned = UIUtils.readWithValidatorAndParser(yesOrNOValidator, yesOrNoParser);
+        UIUtils.renderQuestion("Was the helmet damaged? (Y/n)");
+        boolean helmetDamaged = UIUtils.readWithValidatorAndParser(yesOrNOValidator, yesOrNoParser);
+        UIUtils.renderQuestion("Was the bike damaged? (Y/n)");
+        boolean bikeDamaged = UIUtils.readWithValidatorAndParser(yesOrNOValidator, yesOrNoParser);
+        Double debt = this.calculateDebt(ticket, helmetReturned, helmetDamaged, bikeDamaged);
+
+        TicketDTO dto = ticketMapper.entityToDTO(ticket);
+        dto.setDebt(debt);
+        Ticket updatedTicked = this.ticketService.update(ticketId, dto);
+        System.out.println("updatedTicked = " + updatedTicked);
     }
 }

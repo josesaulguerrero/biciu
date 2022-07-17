@@ -88,8 +88,11 @@ public class UserRepository implements CRUDRepository<User, String> {
             throw new IllegalArgumentException("The id given as the first argument doesn't match the id of the object passed as second argument.");
         }
         int elementIndex = this.indexOf(id);
+        System.out.println(this.users);
         this.users.set(elementIndex, updatedObject);
+        System.out.println(this.users);
         this.saveChanges();
+        System.out.println(this.users);
         return this.users.get(elementIndex);
     }
 
