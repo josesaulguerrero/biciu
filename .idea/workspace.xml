@@ -6,6 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="56691b31-feb5-4af8-947c-6c15ff3989c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/BikesMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/BikesMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/UI/controllers/BikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/BikeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/domain/dto/BikeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/dto/BikeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/domain/mappers/BikeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/mappers/BikeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/domain/services/BikeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/services/BikeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/data/bikes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/bikes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/entities/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/Bike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/entities/BikeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/BikeType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/persistence/repositories/BikeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/repositories/BikeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/domain/dto/TicketDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/dto/TicketDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/domain/mapper/TicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/mappers/TicketMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/domain/services/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/domain/services/TicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/persistence/data/tickets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/tickets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/persistence/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/persistence/entities/TicketDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/TicketDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/persistence/entities/TicketStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/TicketStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/tickets/persistence/repositories/TicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/repositories/TicketRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/users/persistence/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/users/persistence/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/utils/ReflectionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/utils/ReflectionUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +68,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/co/com/biciu/modules" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data" />
       <recent name="$PROJECT_DIR$/src/main/java/co/com/biciu/modules/bikes/domain" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">

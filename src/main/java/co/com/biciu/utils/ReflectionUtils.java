@@ -1,12 +1,10 @@
 package co.com.biciu.utils;
 
 import co.com.biciu.annotations.Id;
-import co.com.biciu.modules.bikes.persistence.entities.Bike;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class ReflectionUtils {
     private static void validateAnnotationIsNotPresentMoreThanOnce(Class<?> clazz) {
