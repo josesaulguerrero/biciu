@@ -2,13 +2,13 @@ package co.com.biciu.app.domain.services;
 
 import co.com.biciu.app.domain.dto.UserDTO;
 import co.com.biciu.app.domain.mappers.UserMapper;
+import co.com.biciu.app.persistence.entities.Ticket;
 import co.com.biciu.app.persistence.entities.User;
 import co.com.biciu.app.persistence.repositories.UserRepository;
 import co.com.biciu.interfaces.BasicMapper;
 import co.com.biciu.interfaces.CRUDRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserService {
     private final CRUDRepository<User, String> repository;
@@ -33,5 +33,12 @@ public class UserService {
 
     public User update(String id, UserDTO dto) {
         return this.repository.update(id, mapper.DTOToEntity(dto));
+    }
+
+    public User addNewTicket(String id, Ticket ticket) {
+        User user = this.findById(id);
+        UserDTO dto = mapper.entityToDTO(user);
+        dto.addTicketId(ticket.getId());
+        return this.update(id, dto);
     }
 }

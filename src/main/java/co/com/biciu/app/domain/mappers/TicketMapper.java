@@ -2,19 +2,21 @@ package co.com.biciu.app.domain.mappers;
 
 import co.com.biciu.app.domain.services.UserService;
 import co.com.biciu.app.persistence.entities.User;
+import co.com.biciu.app.persistence.repositories.UserRepository;
 import co.com.biciu.interfaces.BasicMapper;
 import co.com.biciu.app.domain.dto.TicketDTO;
 import co.com.biciu.app.persistence.entities.Ticket;
 import co.com.biciu.app.persistence.entities.TicketDate;
 import co.com.biciu.app.persistence.entities.TicketStatus;
+import co.com.biciu.interfaces.CRUDRepository;
 
 import java.util.Locale;
 
 public class TicketMapper implements BasicMapper<Ticket, TicketDTO> {
-    private final UserService service;
+    private final CRUDRepository<User, String> repository;
 
     public TicketMapper() {
-        this.service = new UserService();
+        this.repository = new UserRepository();
     }
 
     @Override
@@ -36,7 +38,7 @@ public class TicketMapper implements BasicMapper<Ticket, TicketDTO> {
             throw new IllegalArgumentException("The given DTO must be valid, otherwise it can't be mapped to a valid entity");
         }
 
-        User user = service.findById(DTO.getUserId());
+        User user = this.repository.findById(DTO.getUserId()).orElseThrow(() -> new IllegalStateException("The id of this DTO doesn't belong to any of the registered users."));
         return new Ticket(
                 DTO.getTicketId(),
                 user,

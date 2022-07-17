@@ -1,28 +1,32 @@
 package co.com.biciu.app.UI.controllers;
 
 import co.com.biciu.app.domain.dto.BikeDTO;
+import co.com.biciu.app.domain.dto.TicketDTO;
 import co.com.biciu.app.domain.mappers.BikeMapper;
 import co.com.biciu.app.domain.services.BikeService;
+import co.com.biciu.app.domain.services.TicketService;
+import co.com.biciu.app.domain.services.UserService;
 import co.com.biciu.app.persistence.entities.Bike;
 import co.com.biciu.app.persistence.entities.BikeType;
 import co.com.biciu.app.persistence.entities.Ticket;
-import co.com.biciu.app.persistence.entities.User;
 import co.com.biciu.interfaces.BasicMapper;
 import co.com.biciu.utils.UIUtils;
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.Range;
 import org.apache.commons.lang3.math.NumberUtils;
 
+import java.time.LocalDateTime;
+
 public class BikeController {
-    private final TicketController ticketController;
-    private final UserController userController;
     private final BikeService service;
+    private final UserService userService;
+    private final TicketService ticketService;
     private final BasicMapper<Bike, BikeDTO> mapper;
 
     public BikeController() {
-        this.ticketController = new TicketController();
-        this.userController = new UserController();
         this.service = new BikeService();
+        this.userService = new UserService();
+        this.ticketService = new TicketService();
         this.mapper = new BikeMapper();
     }
 
@@ -72,11 +76,26 @@ public class BikeController {
         System.out.println("The updated information is: ".concat(updatedBike.toString()));
     }
 
-    public void borrow() {
-        String userId = this.userController.getUserId();
-        Ticket ticket = this.ticketController.create();
-        this.userController.addNewTicket(userId, ticket);
+    private Ticket createTicket() {
+        UIUtils.renderQuestion("What is your user Id?");
+        String userId = UIUtils.readWithValidator(value -> value.matches("[PS]-\\d+"));
         try {
+            Ticket newTicket = this.ticketService.save(
+                    new TicketDTO(userId, true, LocalDateTime.now(), 0.0, "ACTIVE")
+            );
+            System.out.println("The information of the just created ticket is: ".concat(newTicket.toString()));
+            return newTicket;
+        } catch (Exception e) {
+            throw new RuntimeException("The given id doesn't belong to any user.");
+        }
+    }
+
+    public void borrow() {
+        UIUtils.renderQuestion("What is your user Id?");
+        String userId = UIUtils.readWithValidator(value -> value != null && value.matches("[PS]-\\d+"));
+        try {
+            Ticket ticket = this.createTicket();
+            this.userService.addNewTicket(userId, ticket);
             Bike availableBike = this.service.findAvailable();
             BikeDTO dto = mapper.entityToDTO(availableBike);
             dto.setAvailable(false);

@@ -14,11 +14,9 @@ import java.util.List;
 
 public class UserController {
     private final UserService service;
-    private final UserMapper mapper;
 
     public UserController() {
         this.service = new UserService();
-        this.mapper = new UserMapper();
     }
 
     public void printAll() {
@@ -51,12 +49,5 @@ public class UserController {
     public String getUserId() {
         UIUtils.renderQuestion("What is your user Id?");
         return UIUtils.readWithValidator(value -> value.matches("[PS]-\\d+"));
-    }
-
-    public User addNewTicket(String id, Ticket ticket) {
-        User user = this.findUserById(id);
-        UserDTO dto = mapper.entityToDTO(user);
-        dto.addTicketId(ticket.getId());
-        return this.service.update(id, dto);
     }
 }

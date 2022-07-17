@@ -24,10 +24,11 @@ public class BikesMain {
         UIUtils.renderOptionsList(
                 "1. Add a new bike to the register.",
                 "2. Print all the bikes information.",
-                "3. Update a bike information."
+                "3. Update a bike information.",
+                "4. Borrow a bike."
         );
         int selectedOption = UIUtils.readWithValidatorAndParser(
-                value -> NumberUtils.isParsable(value) && Range.between(1, 3).contains(Integer.parseInt(value)),
+                value -> NumberUtils.isParsable(value) && Range.between(1, 4).contains(Integer.parseInt(value)),
                 value -> Integer.parseInt(value.trim())
         );
         callController(selectedOption);
@@ -43,6 +44,9 @@ public class BikesMain {
                 break;
             case 3:
                 bikeController.update();
+                break;
+            case 4:
+                bikeController.borrow();
         }
     }
 }

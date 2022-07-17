@@ -42,7 +42,7 @@ public class TicketRepository implements CRUDRepository<Ticket, String> {
                 .map(Ticket -> Ticket.getId().replaceAll("T-(\\d+)", "$1"))
                 .map(Integer::parseInt)
                 .max(Integer::compare)
-                .orElseThrow();
+                .orElse(0);
     }
 
     private String generateNewId() {

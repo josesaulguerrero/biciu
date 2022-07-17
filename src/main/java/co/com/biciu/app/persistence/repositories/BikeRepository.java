@@ -38,7 +38,7 @@ public class BikeRepository implements CRUDRepository<Bike, String> {
     }
 
     private Integer calculateCurrentId() {
-        return bikes.stream().map(bike -> bike.getId().replaceAll("BIC-(\\d+)", "$1")).map(Integer::parseInt).max(Integer::compare).orElseThrow();
+        return bikes.stream().map(bike -> bike.getId().replaceAll("BIC-(\\d+)", "$1")).map(Integer::parseInt).max(Integer::compare).orElse(0);
     }
 
     private String generateNewId() {
