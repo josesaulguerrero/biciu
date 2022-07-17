@@ -30,7 +30,7 @@ public class UserSerializer implements Serializer<User, String> {
                 entity.getType().name() + ";" +
                 entity.getFullName() + ";" +
                 entity.getAge() + ";" +
-                stringifiedTickets + ";";
+                stringifiedTickets + "?";
     }
 
     private List<Ticket> getAssociatedTickets(String[] ids) {

@@ -21,7 +21,7 @@ public class TicketSerializer implements Serializer<Ticket, String> {
                 entity.getUser().getId() + ";" +
                 entity.getDate().getStartDate() + ";" +
                 entity.getDebt() + ";" +
-                entity.getStatus().name() + ";";
+                entity.getStatus().name() + "?";
     }
 
     @Override
