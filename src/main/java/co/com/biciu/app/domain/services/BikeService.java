@@ -22,6 +22,14 @@ public class BikeService {
         return this.repository.findAll();
     }
 
+    public Bike findAvailable() {
+        return this.findAll()
+                .stream()
+                .filter(Bike::isAvailable)
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("There are no available bikes, we are sorry."));
+    }
+
     public Bike findById(String id) {
         return this.repository.findById(id).orElseThrow();
     }

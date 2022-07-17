@@ -73,9 +73,17 @@ public class BikeController {
     }
 
     public void borrow() {
-        // TODO implement borrow
         String userId = this.userController.getUserId();
         Ticket ticket = this.ticketController.create();
         this.userController.addNewTicket(userId, ticket);
+        try {
+            Bike availableBike = this.service.findAvailable();
+            BikeDTO dto = mapper.entityToDTO(availableBike);
+            dto.setAvailable(false);
+            this.service.update(availableBike.getId(), dto);
+            System.out.println("Your assigned bike is: ".concat(availableBike.toString()));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
