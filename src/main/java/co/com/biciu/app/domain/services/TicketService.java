@@ -8,6 +8,7 @@ import co.com.biciu.app.persistence.entities.Ticket;
 import co.com.biciu.app.persistence.repositories.TicketRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TicketService {
     private final CRUDRepository<Ticket, String> repository;
@@ -24,6 +25,10 @@ public class TicketService {
 
     public Ticket findById(String id) {
         return this.repository.findById(id).orElseThrow();
+    }
+
+    public List<Ticket> findManyById(List<String> ids) {
+        return ids.stream().map(this::findById).collect(Collectors.toList());
     }
 
     public Ticket save(TicketDTO dto) {
