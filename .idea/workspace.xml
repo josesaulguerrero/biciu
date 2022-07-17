@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56691b31-feb5-4af8-947c-6c15ff3989c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/BikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/BikeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/TicketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/bikes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/bikes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/tickets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/tickets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/data/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/TicketDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/entities/TicketDate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/repositories/TicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/com/biciu/app/persistence/repositories/TicketRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +105,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/BikeController.java</url>
           <line>90</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/co/com/biciu/app/UI/controllers/TicketController.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
