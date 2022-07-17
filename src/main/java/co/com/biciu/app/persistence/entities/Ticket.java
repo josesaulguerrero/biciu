@@ -82,9 +82,7 @@ public class Ticket {
     public String toString() {
         return "Ticket{" +
                 "id='" + id + '\'' +
-                ", user=" + user +
-                ", helmetWasSupplied=" + helmetWasSupplied +
-                ", date=" + date +
+                ", user=" + user.getFullName() + " - " + user.getId() +
                 ", debt=" + debt +
                 ", status=" + status +
                 '}';

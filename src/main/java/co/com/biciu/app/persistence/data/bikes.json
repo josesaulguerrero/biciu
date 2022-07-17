@@ -19,32 +19,32 @@
   "color" : "Yellow",
   "type" : "MOUNTAIN"
 }, {
-  "isAvailable" : true,
+  "isAvailable" : false,
   "id" : "BIC-05",
   "color" : "Purple",
   "type" : "ROAD"
 }, {
-  "isAvailable" : true,
+  "isAvailable" : false,
   "id" : "BIC-06",
   "color" : "Red",
   "type" : "ROAD"
 }, {
-  "isAvailable" : true,
+  "isAvailable" : false,
   "id" : "BIC-07",
   "color" : "Red",
   "type" : "MOUNTAIN"
 }, {
-  "isAvailable" : true,
+  "isAvailable" : false,
   "id" : "BIC-08",
   "color" : "Blue",
   "type" : "ROAD"
 }, {
-  "isAvailable" : true,
+  "isAvailable" : false,
   "id" : "BIC-09",
   "color" : "Blue",
   "type" : "MOUNTAIN"
 }, {
-  "isAvailable" : true,
+  "isAvailable" : false,
   "id" : "BIC-10",
   "color" : "Purple",
   "type" : "ROAD"

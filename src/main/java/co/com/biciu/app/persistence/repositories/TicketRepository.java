@@ -69,11 +69,13 @@ public class TicketRepository implements CRUDRepository<Ticket, String> {
 
     @Override
     public List<Ticket> findAll() {
+        this.loadObjectsInMemory();
         return this.tickets;
     }
 
     @Override
     public Optional<Ticket> findById(String id) {
+        this.loadObjectsInMemory();
         if (!this.isValidId(id)) {
             throw new IllegalArgumentException("Invalid id; wrong pattern.");
         }
@@ -82,6 +84,7 @@ public class TicketRepository implements CRUDRepository<Ticket, String> {
 
     @Override
     public Ticket save(Ticket object) {
+        this.loadObjectsInMemory();
         this.assignIdField(object);
         this.tickets.add(object);
         boolean wasWrittenSuccessfully = this.saveChanges();
@@ -100,9 +103,11 @@ public class TicketRepository implements CRUDRepository<Ticket, String> {
 
     @Override
     public Ticket update(String id, Ticket updatedObject) {
+        this.loadObjectsInMemory();
         if (!id.equals(updatedObject.getId())) {
             throw new IllegalArgumentException("The id given as the first argument doesn't match the id of the object passed as second argument.");
         }
+        System.out.println(updatedObject);
         int elementIndex = this.indexOf(id);
         this.tickets.set(elementIndex, updatedObject);
         this.saveChanges();
@@ -111,6 +116,7 @@ public class TicketRepository implements CRUDRepository<Ticket, String> {
 
     @Override
     public Boolean delete(String id) {
+        this.loadObjectsInMemory();
         boolean wasDeleted;
         try {
             int elementIndex = this.indexOf(id);

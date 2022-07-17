@@ -1,6 +1,7 @@
 package co.com.biciu.app.persistence.entities;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class TicketDate {
     private LocalDateTime startDate;
@@ -12,6 +13,10 @@ public class TicketDate {
         this.startDate = startDate;
         // by default the bikes are lent for an exact hour.
         this.endDate = startDate.plusHours(1);
+    }
+
+    public int calculateThirtyMinuteLapses(LocalDateTime now) {
+        return Math.toIntExact(this.startDate.until(now, ChronoUnit.MINUTES) / 30);
     }
 
     public Boolean isLate(LocalDateTime now) {

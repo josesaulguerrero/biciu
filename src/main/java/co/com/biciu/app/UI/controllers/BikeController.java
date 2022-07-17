@@ -10,6 +10,7 @@ import co.com.biciu.app.domain.services.UserService;
 import co.com.biciu.app.persistence.entities.Bike;
 import co.com.biciu.app.persistence.entities.BikeType;
 import co.com.biciu.app.persistence.entities.Ticket;
+import co.com.biciu.app.persistence.entities.TicketStatus;
 import co.com.biciu.interfaces.BasicMapper;
 import co.com.biciu.utils.UIUtils;
 import org.apache.commons.lang3.EnumUtils;
@@ -26,6 +27,7 @@ public class BikeController {
     private final BikeService service;
     private final UserService userService;
     private final TicketService ticketService;
+    private final TicketController ticketController;
     private final BasicMapper<Ticket, TicketDTO> ticketMapper;
     private final BasicMapper<Bike, BikeDTO> mapper;
 
@@ -35,6 +37,7 @@ public class BikeController {
         this.ticketService = new TicketService();
         this.mapper = new BikeMapper();
         this.ticketMapper = new TicketMapper();
+        this.ticketController = new TicketController();
     }
 
     public void printAll() {
@@ -83,24 +86,10 @@ public class BikeController {
         System.out.println("The updated information is: ".concat(updatedBike.toString()));
     }
 
-    private Ticket createTicket(String userId) {
-        try {
-            Ticket newTicket = this.ticketService.save(
-                    new TicketDTO(userId, true, LocalDateTime.now(), 0.0, "ACTIVE")
-            );
-            System.out.println("The information of the just created ticket is: ".concat(newTicket.toString()));
-            return newTicket;
-        } catch (Exception e) {
-            throw new RuntimeException("The given id doesn't belong to any user.");
-        }
-    }
-
     public void borrow() {
-        UIUtils.renderQuestion("What is your user Id?");
-        String userId = UIUtils.readWithValidator(value -> value.matches("[PS]-\\w+")).trim();
         try {
-            Ticket ticket = this.createTicket(userId);
-            this.userService.addNewTicket(userId, ticket);
+            Ticket ticket = this.ticketController.create();
+            this.userService.addNewTicket(ticket.getUser().getId(), ticket);
             Bike availableBike = this.service.findAvailable();
             BikeDTO dto = mapper.entityToDTO(availableBike);
             dto.setAvailable(false);
@@ -112,28 +101,21 @@ public class BikeController {
         }
     }
 
-    private int calculateThirtyMinuteLapses(LocalDateTime start, LocalDateTime now) {
-        return Math.toIntExact(start.until(now, ChronoUnit.MINUTES) / 30);
-    }
-
     private Double calculateDebt(Ticket ticket, boolean helmetReturned, boolean helmetDamaged, boolean bikeDamaged) {
         double debt = 0.0;
         LocalDateTime now = LocalDateTime.now();
         boolean isLate = ticket.getDate().isLate(now);
-        debt += isLate ? calculateThirtyMinuteLapses(ticket.getDate().getStartDate(), now) * 3 : 0.0;
+        debt += isLate ? ticket.getDate().calculateThirtyMinuteLapses(now) * 3 : 0.0;
         debt += !helmetReturned ? 5 : 0.0;
         debt += helmetDamaged ? 5 : 0.0;
         debt += bikeDamaged ? 5 : 0.0;
         return debt;
     }
 
-    public void returnBike() {
+    private void performUpdate(Ticket ticket) {
         Predicate<String> yesOrNOValidator = value -> value.toUpperCase(Locale.ROOT).trim().matches("(Y(ES)?|N(O)?)");
         Function<String, Boolean> yesOrNoParser = value -> value.toUpperCase(Locale.ROOT).trim().matches("Y(ES)?");
 
-        UIUtils.renderQuestion("What is your ticket Id?");
-        String ticketId = UIUtils.readWithValidator(value -> value.matches("T-\\d+")).trim();
-        Ticket ticket = this.ticketService.findById(ticketId);
         UIUtils.renderQuestion("Was the helmet returned? (Y/n)");
         boolean helmetReturned = UIUtils.readWithValidatorAndParser(yesOrNOValidator, yesOrNoParser);
         UIUtils.renderQuestion("Was the helmet damaged? (Y/n)");
@@ -143,8 +125,27 @@ public class BikeController {
         Double debt = this.calculateDebt(ticket, helmetReturned, helmetDamaged, bikeDamaged);
 
         TicketDTO dto = ticketMapper.entityToDTO(ticket);
+        dto.setTicketStatus(debt > 0 ? TicketStatus.PENDING.name() : TicketStatus.OK.name());
         dto.setDebt(debt);
-        Ticket updatedTicked = this.ticketService.update(ticketId, dto);
-        System.out.println("Your debt is: ".concat(String.valueOf(updatedTicked.getDebt())));
+        Ticket updatedTicket = this.ticketService.update(ticket.getId(), dto);
+        System.out.println(debt > 0
+                ? "Your debt is: ".concat(String.valueOf(updatedTicket.getDebt()))
+                : "You don't have to pay anything! Thanks for using our service :)"
+        );
+    }
+
+    public void returnBike() {
+        UIUtils.renderQuestion("What is your ticket Id?");
+        String ticketId = UIUtils.readWithValidator(value -> value.matches("T-\\d+")).trim();
+        try {
+            Ticket ticket = this.ticketService.findById(ticketId);
+            if(ticket.getStatus() == TicketStatus.ACTIVE) {
+                performUpdate(ticket);
+            } else {
+                System.out.println("This ticket is ".concat(ticket.getStatus().name()).concat("; the bike was already returned."));
+            }
+        } catch (Exception e) {
+            System.out.println("The given id doesn't belong to any of the existent tickets.");
+        }
     }
 }
