@@ -1,6 +1,7 @@
 package co.com.biciu.app.domain.mappers;
 
 import co.com.biciu.app.domain.dto.UserDTO;
+import co.com.biciu.app.domain.services.TicketService;
 import co.com.biciu.app.persistence.entities.Ticket;
 import co.com.biciu.app.persistence.entities.User;
 import co.com.biciu.app.persistence.entities.UserType;
@@ -11,6 +12,11 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class UserMapper implements BasicMapper<User, UserDTO> {
+    private final TicketService service;
+
+    public UserMapper() {
+        this.service = new TicketService();
+    }
 
     private List<String> getTicketsIds(List<Ticket> tickets) {
         return tickets
@@ -33,8 +39,7 @@ public class UserMapper implements BasicMapper<User, UserDTO> {
     }
 
     private List<Ticket> getTicketsFromIds(List<String> ids) {
-        // TODO get tickets from the ids
-        return null;
+        return this.service.findManyById(ids);
     }
 
     @Override
