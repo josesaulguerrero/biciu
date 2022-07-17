@@ -49,7 +49,7 @@
   "color" : "Purple",
   "type" : "ROAD"
 }, {
-  "isAvailable" : true,
+  "isAvailable" : false,
   "id" : "BIC-11",
   "color" : "Yellow",
   "type" : "ROAD"

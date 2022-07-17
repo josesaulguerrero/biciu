@@ -1,9 +1,7 @@
 package co.com.biciu.app.persistence.entities;
 
 import co.com.biciu.annotations.Id;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 
 public class Ticket {
     // T-NNN
@@ -30,6 +28,7 @@ public class Ticket {
     }
 
     public Ticket(User user, Boolean helmetWasSupplied, TicketDate date, Double debt, TicketStatus status) {
+        this();
         this.user = user;
         this.helmetWasSupplied = helmetWasSupplied;
         this.date = date;
@@ -38,12 +37,8 @@ public class Ticket {
     }
 
     public Ticket(String id, User user, Boolean helmetWasSupplied, TicketDate date, Double debt, TicketStatus status) {
+        this(user, helmetWasSupplied, date, debt, status);
         this.id = id;
-        this.user = user;
-        this.helmetWasSupplied = helmetWasSupplied;
-        this.date = date;
-        this.debt = debt;
-        this.status = status;
     }
 
     public String getId() {

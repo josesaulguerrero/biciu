@@ -53,11 +53,13 @@ public class UserRepository implements CRUDRepository<User, String> {
 
     @Override
     public List<User> findAll() {
+        this.loadObjectsInMemory();
         return this.users;
     }
 
     @Override
     public Optional<User> findById(String id) {
+        this.loadObjectsInMemory();
         if(!this.isValidId(id)) {
             throw new IllegalArgumentException("Invalid id; wrong pattern.");
         }
@@ -66,6 +68,7 @@ public class UserRepository implements CRUDRepository<User, String> {
 
     @Override
     public User save(User object) {
+        this.loadObjectsInMemory();
         this.assignIdField(object);
         this.users.add(object);
         boolean wasWrittenSuccessfully = this.saveChanges();
